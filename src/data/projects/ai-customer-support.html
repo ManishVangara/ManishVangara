@@ -1,0 +1,31 @@
+<article>
+    <h1>AI Customer Support Agent</h1>
+    <p class="lead">A context-aware customer support agent built with Large Language Models (LLMs) and RAG. Handles complex queries and escalates appropriately.</p>
+    
+    <figure>
+        <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=1000&auto=format&fit=crop" alt="AI Customer Support Agent Architecture">
+        <figcaption>System Architecture Overview</figcaption>
+    </figure>
+
+    <h2>Project Overview</h2>
+    <p>This project aims to revolutionize customer support by deploying an intelligent agent capable of understanding context, managing multi-turn conversations, and providing accurate responses based on a knowledge base.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li><strong>Context Awareness:</strong> Remembers previous interactions within the session.</li>
+        <li><strong>RAG (Retrieval-Augmented Generation):</strong> Fetches relevant documentation to ground answers.</li>
+        <li><strong>Escalation Protocol:</strong> Detects sentiment and complexity to hand off to human agents.</li>
+    </ul>
+
+    <h2>Technical Stack</h2>
+    <p>The solution is built using a modern AI stack:</p>
+    <ul>
+        <li><strong>Python</strong> for the core backend logic.</li>
+        <li><strong>LangChain</strong> for orchestrating LLM flows.</li>
+        <li><strong>OpenAI GPT-4</strong> as the reasoning engine.</li>
+        <li><strong>Pinecone</strong> for vector storage and retrieval.</li>
+    </ul>
+
+    <h2>Challenges & Solutions</h2>
+    <p>One of the main challenges was hallucination. We implemented a strict verification layer that cross-references the LLM's output with the retrieved context before sending the response to the user.</p>
+</article>
