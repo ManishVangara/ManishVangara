@@ -23,9 +23,7 @@ body {
 }
 
 @layer utilities {
-  .animate-blink {
-    animation: blink 1s step-end infinite;
-  }
+
 
   .animate-wave {
     animation: wave 2.5s infinite;
@@ -59,17 +57,7 @@ body {
   }
 }
 
-@keyframes blink {
 
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-}
 
 @keyframes wave {
   0% {

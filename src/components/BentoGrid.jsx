@@ -77,7 +77,7 @@ export const BentoGrid = () => {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                             </span>
-                            <span className="text-xs font-medium text-gray-700 dark:text-gray-300">San Francisco, CA</span>
+                            <span className="text-xs font-medium text-gray-700 dark:text-gray-300">Seattle, WA</span>
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@ export const BentoGrid = () => {
                         <div className="bg-blue-600/10 dark:bg-blue-500/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                             <MapPin className="text-blue-600 dark:text-blue-400" size={24} />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Based in SF</h3>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Based in Seattle</h3>
                         <p className="text-gray-600 dark:text-gray-400 text-sm mt-1 mb-4">Open to relocation & remote work.</p>
 
                         <Link to="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:gap-3 transition-all">

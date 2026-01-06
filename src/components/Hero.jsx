@@ -1,13 +1,9 @@
 import { Download } from 'lucide-react';
-import heroBg from '../assets/hero-bg.png';
-import { useTypewriter } from '../hooks/useTypewriter';
+import { profile } from '../data/profile';
+import { TextLoop } from './ui/TextLoop';
 
 export const Hero = () => {
-    const typewriterText = useTypewriter([
-        "Building Scalable Data Infrastructure",
-        "Deriving Actionable Insights from Data",
-        "Engineering Robust AI Solutions"
-    ]);
+
 
     return (
         <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
@@ -15,7 +11,7 @@ export const Hero = () => {
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white dark:from-transparent dark:via-gray-900/50 dark:to-gray-900 z-10" />
                 <img
-                    src={heroBg}
+                    src={profile.hero.background}
                     alt="Data Science Background"
                     className="w-full h-full object-cover opacity-60 dark:opacity-40"
                 />
@@ -29,25 +25,24 @@ export const Hero = () => {
 
                 {/* Name */}
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-gray-900 dark:text-white mb-4 transition-colors duration-300">
-                    Manish <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-600">Vangara</span>
+                    {profile.firstName} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-600">{profile.lastName}</span>
                 </h1>
 
                 {/* Role */}
                 <h2 className="text-xl md:text-2xl font-medium text-blue-600 dark:text-blue-400 mb-6 tracking-wide uppercase">
-                    Data Scientist & Data Engineer
+                    {profile.role}
                 </h2>
 
-                {/* Typewriter Effect */}
-                <div className="min-h-[40px] md:min-h-[60px] mb-8">
-                    <p className="text-2xl md:text-4xl font-semibold text-gray-700 dark:text-gray-300">
-                        {typewriterText}
-                        <span className="animate-blink">|</span>
-                    </p>
+                {/* Text Loop Effect */}
+                <div className="min-h-[40px] md:min-h-[60px] mb-8 flex items-center justify-center">
+                    <div className="text-2xl md:text-4xl font-semibold text-gray-700 dark:text-gray-300 w-full">
+                        <TextLoop words={profile.hero.typewriter} />
+                    </div>
                 </div>
 
                 {/* Tagline */}
                 <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed transition-colors duration-300">
-                    Crafting intelligent systems from chaos. Passionate about uncovering stories hidden within data and building scalable infrastructure to tell them.
+                    {profile.hero.tagline}
                 </p>
 
                 {/* Buttons */}
@@ -65,7 +60,7 @@ export const Hero = () => {
                         Contact Me
                     </a>
                     <a
-                        href="/resume.pdf"
+                        href={profile.resume}
                         download
                         className="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-200 shadow-lg shadow-blue-500/20"
                     >

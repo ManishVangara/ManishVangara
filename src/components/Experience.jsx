@@ -102,7 +102,7 @@ const TimelineItem = ({ item, index, isLeft }) => {
                     {/* Skills/Tags */}
                     {item.skills && item.skills.length > 0 && (
                         <div className="flex flex-wrap gap-2">
-                            {item.skills.map((skill, i) => (
+                            {item.skills?.map((skill, i) => (
                                 <span
                                     key={i}
                                     className="px-2.5 py-1 text-xs rounded-md bg-white dark:bg-black/40 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 group-hover:border-blue-500/20 transition-colors"

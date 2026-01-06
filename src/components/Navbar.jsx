@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Github, Linkedin, Moon, Sun, Menu, X, ChevronDown } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 import { Link, useLocation } from 'react-router-dom';
+import { profile } from '../data/profile';
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,14 +53,14 @@ export const Navbar = () => {
                 {/* Logo */}
                 <div className="pointer-events-auto">
                     <Link to="/" className="font-bold text-xl tracking-tighter text-gray-900 dark:text-white drop-shadow-lg transition-colors duration-300">
-                        MANISH<span className="text-blue-500">.</span>
+                        {profile.logoText}<span className="text-blue-500">.</span>
                     </Link>
                 </div>
 
                 {/* Socials & Theme Toggle (Desktop) */}
                 <div className="hidden md:flex items-center gap-4 pointer-events-auto bg-white/50 dark:bg-black/20 backdrop-blur-md p-2 rounded-full border border-gray-200 dark:border-white/10 transition-colors duration-300">
-                    <SocialLink href="https://github.com" icon={<Github size={20} />} label="GitHub" />
-                    <SocialLink href="https://linkedin.com" icon={<Linkedin size={20} />} label="LinkedIn" />
+                    <SocialLink href={profile.socials.github} icon={<Github size={20} />} label="GitHub" />
+                    <SocialLink href={profile.socials.linkedin} icon={<Linkedin size={20} />} label="LinkedIn" />
                     <div className="w-px h-6 bg-gray-300 dark:bg-white/20 mx-1" />
                     <button
                         onClick={toggleTheme}
@@ -177,8 +178,8 @@ export const Navbar = () => {
                     </div>
 
                     <div className="flex items-center gap-6 mt-8">
-                        <SocialLink href="https://github.com" icon={<Github size={24} />} label="GitHub" />
-                        <SocialLink href="https://linkedin.com" icon={<Linkedin size={24} />} label="LinkedIn" />
+                        <SocialLink href={profile.socials.github} icon={<Github size={24} />} label="GitHub" />
+                        <SocialLink href={profile.socials.linkedin} icon={<Linkedin size={24} />} label="LinkedIn" />
                         <button
                             onClick={toggleTheme}
                             className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"

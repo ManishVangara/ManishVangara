@@ -48,10 +48,13 @@ const getIconData = (skillName) => {
 
 export const Skills = () => {
     // We will organize categories into rows for the marquee
+    // Safely access skills array indices with defaults to empty arrays
+    const getItems = (index) => (skills && skills[index] && skills[index].items) ? skills[index].items : [];
+
     const rows = [
-        skills[0].items.concat(skills[3].items), // Languages + Web Dev
-        skills[1].items.concat(skills[2].items), // AI + Data Eng
-        skills[4].items // Tools
+        getItems(0).concat(getItems(3)), // Languages + Web Dev
+        getItems(1).concat(getItems(2)), // AI + Data Eng
+        getItems(4) // Tools
     ];
 
     return (

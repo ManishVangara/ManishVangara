@@ -12,10 +12,10 @@ export const ProjectsPage = () => {
     const [search, setSearch] = useState("");
 
     const filteredProjects = allProjects.filter(project => {
-        const matchesCategory = filter === "All" || project.category === filter;
-        const matchesSearch = project.title.toLowerCase().includes(search.toLowerCase()) ||
-            project.description.toLowerCase().includes(search.toLowerCase()) ||
-            project.tech.some(t => t.toLowerCase().includes(search.toLowerCase()));
+        const matchesCategory = filter === "All" || (project.category || "Uncategorized") === filter;
+        const matchesSearch = (project.title || "").toLowerCase().includes(search.toLowerCase()) ||
+            (project.description || "").toLowerCase().includes(search.toLowerCase()) ||
+            (project.tech || []).some(t => t.toLowerCase().includes(search.toLowerCase()));
         return matchesCategory && matchesSearch;
     });
 
@@ -71,8 +71,8 @@ export const ProjectsPage = () => {
                         <div className="h-48 overflow-hidden relative">
                             <Link to={`/projects/${project.id}`} className="block h-full w-full">
                                 <img
-                                    src={project.image}
-                                    alt={project.title}
+                                    src={project.image || "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80"}
+                                    alt={project.title || 'Project'}
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
                             </Link>
@@ -89,19 +89,19 @@ export const ProjectsPage = () => {
                         {/* Content */}
                         <div className="p-6 flex flex-col flex-grow">
                             <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">
-                                {project.category}
+                                {project.category || 'Project'}
                             </span>
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                                 <Link to={`/projects/${project.id}`}>
-                                    {project.title}
+                                    {project.title || 'Untitled'}
                                 </Link>
                             </h3>
                             <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 line-clamp-3">
-                                {project.description}
+                                {project.description || 'No description.'}
                             </p>
 
                             <div className="mt-auto flex flex-wrap gap-2">
-                                {project.tech.map(t => (
+                                {project.tech?.map(t => (
                                     <span key={t} className="px-2 py-1 bg-gray-100 dark:bg-white/5 text-xs font-medium text-gray-600 dark:text-gray-300 rounded-md">
                                         {t}
                                     </span>

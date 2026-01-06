@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Mail, Github, Linkedin, Twitter, ArrowRight, Send, Check, Copy } from 'lucide-react';
+import { profile } from '../data/profile';
 
 export const Connect = () => {
     const [formStatus, setFormStatus] = useState('idle'); // idle, sending, success
@@ -16,7 +17,7 @@ export const Connect = () => {
     ];
 
     const handleCopyEmail = () => {
-        navigator.clipboard.writeText('manish.vangara@example.com');
+        navigator.clipboard.writeText(profile.email);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -63,7 +64,7 @@ export const Connect = () => {
                             </h2>
                             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-lg mb-8">
                                 Whether you have a groundbreaking idea or just want to talk tech, I'm all ears. Currently based in
-                                <span className="font-semibold text-gray-900 dark:text-white"> San Francisco</span> & open to global collaborations.
+                                <span className="font-semibold text-gray-900 dark:text-white"> {profile.location}</span> & open to global collaborations.
                             </p>
 
                             {/* Conversation Starters */}
@@ -73,8 +74,8 @@ export const Connect = () => {
                                         key={topic.id}
                                         onClick={() => handleTopicClick(topic)}
                                         className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${activeTopic === topic.id
-                                                ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-500/25'
-                                                : 'bg-white dark:bg-zinc-900 border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400'
+                                            ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-500/25'
+                                            : 'bg-white dark:bg-zinc-900 border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400'
                                             }`}
                                     >
                                         <span className="mr-2">{topic.emoji}</span>
@@ -98,16 +99,16 @@ export const Connect = () => {
                                         {copied ? "Copied to clipboard!" : "Drop me an email"}
                                     </span>
                                     <span className="text-base font-semibold text-gray-900 dark:text-white">
-                                        manish.vangara@example.com
+                                        {profile.email}
                                     </span>
                                 </div>
                                 <Copy size={16} className={`ml-auto text-gray-400 group-hover:text-blue-500 transition-colors ${copied ? 'opacity-0' : 'opacity-100'}`} />
                             </div>
 
                             <div className="flex gap-4 pt-4">
-                                <SocialIcon href="https://github.com" icon={<Github size={24} />} />
-                                <SocialIcon href="https://linkedin.com" icon={<Linkedin size={24} />} />
-                                <SocialIcon href="https://twitter.com" icon={<Twitter size={24} />} />
+                                <SocialIcon href={profile.socials.github} icon={<Github size={24} />} />
+                                <SocialIcon href={profile.socials.linkedin} icon={<Linkedin size={24} />} />
+                                <SocialIcon href={profile.socials.twitter} icon={<Twitter size={24} />} />
                             </div>
                         </div>
                     </div>
@@ -158,8 +159,8 @@ export const Connect = () => {
                                 type="submit"
                                 disabled={formStatus === 'sending' || formStatus === 'success'}
                                 className={`w-full py-4 rounded-xl font-bold text-white flex items-center justify-center gap-2 transition-all duration-300 transform active:scale-95 ${formStatus === 'success'
-                                        ? 'bg-green-500 hover:bg-green-600'
-                                        : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg hover:shadow-blue-500/25'
+                                    ? 'bg-green-500 hover:bg-green-600'
+                                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg hover:shadow-blue-500/25'
                                     }`}
                             >
                                 {formStatus === 'idle' && (

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Github, Linkedin, Mail, Laptop, Coffee, Camera, Plane, Music, Code, CheckCircle2, Circle, ArrowUpRight } from 'lucide-react';
+import { Linkedin, Mail, Laptop, Code, CheckCircle2, Circle, ArrowUpRight } from 'lucide-react';
+import { profile } from '../data/profile';
 
 export const About = () => {
     return (
@@ -19,16 +20,16 @@ export const About = () => {
                             </span>
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl">
-                            A glimpse into my life, interests, and the tools I use to build the future.
+                            {profile.hero.tagline}
                             <br /><br />
                             <span className="text-base md:text-lg text-gray-500 italic">
-                                "I write code not just to solve problems, but to create experiences."
+                                "{profile.about.quote}"
                             </span>
                         </p>
 
                         <div className="flex gap-4 pt-4">
-                            <SocialButton href="https://linkedin.com/in/manishvangara" icon={<Linkedin />} label="LinkedIn" />
-                            <SocialButton href="mailto:hello@manishvangara.com" icon={<Mail />} label="Email" />
+                            <SocialButton href={profile.socials.linkedin} icon={<Linkedin />} label="LinkedIn" />
+                            <SocialButton href={`mailto:${profile.email}`} icon={<Mail />} label="Email" />
                         </div>
                     </div>
 
@@ -42,8 +43,8 @@ export const About = () => {
                             {/* Image */}
                             <div className="relative w-full h-full overflow-hidden rounded-[40px] shadow-2xl transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-blue-500/20 border-4 border-white dark:border-black">
                                 <img
-                                    src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Manish Vangara"
+                                    src={profile.about.photo}
+                                    alt={profile.name}
                                     className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 scale-110 group-hover:scale-100"
                                 />
                                 {/* Overlay Gradient */}
@@ -60,14 +61,13 @@ export const About = () => {
                     </div>
                     <div className="lg:col-span-8 prose dark:prose-invert prose-lg text-gray-600 dark:text-gray-400 leading-loose">
                         <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:float-left first-letter:mr-3">
-                            I started my journey with a curiosity for how things work, which quickly evolved into a passion for software engineering.
-                            Over the years, I've honed my skills in building scalable applications, exploring data engineering, and diving deep into
-                            artificial intelligence.
+                            {profile.about.story[0]}
                         </p>
-                        <p>
-                            From late-night debugging sessions to deploying production-grade systems, I thrive on the challenge of solving complex problems.
-                            My philosophy is simple: build things that matter, and never stop learning.
-                        </p>
+                        {profile.about.story.slice(1).map((paragraph, index) => (
+                            <p key={index}>
+                                {paragraph}
+                            </p>
+                        ))}
                     </div>
                 </FadeInSection>
 
@@ -77,10 +77,15 @@ export const About = () => {
                         <SectionTitle icon="purple" title="Hobbies" />
                     </div>
                     <div className="lg:col-span-8 grid grid-cols-2 gap-6">
-                        <HobbyCard icon={<Camera size={32} />} label="Photography" desc="Capturing moments" color="bg-pink-500/10 text-pink-600" />
-                        <HobbyCard icon={<Plane size={32} />} label="Traveling" desc="Exploring cultures" color="bg-blue-500/10 text-blue-600" />
-                        <HobbyCard icon={<Music size={32} />} label="Production" desc="Creating beats" color="bg-purple-500/10 text-purple-600" />
-                        <HobbyCard icon={<Coffee size={32} />} label="Coffee" desc="Brewing perfection" color="bg-amber-500/10 text-amber-600" />
+                        {profile.hobbies.map((hobby, index) => (
+                            <HobbyCard
+                                key={index}
+                                icon={<hobby.icon size={32} />}
+                                label={hobby.label}
+                                desc={hobby.desc}
+                                color={hobby.color}
+                            />
+                        ))}
                     </div>
                 </FadeInSection>
 
@@ -90,12 +95,9 @@ export const About = () => {
                         <SectionTitle icon="green" title="Bucket List" />
                     </div>
                     <div className="lg:col-span-8 grid md:grid-cols-2 gap-4">
-                        <BucketItem done={true} label="Deploy a production app to millions" />
-                        <BucketItem done={false} label="Visit Japan" />
-                        <BucketItem done={true} label="Build a custom mechanical keyboard" />
-                        <BucketItem done={false} label="Contribute to a major Open Source project" />
-                        <BucketItem done={false} label="Learn to fly a plane" />
-                        <BucketItem done={true} label="Run a marathon" />
+                        {profile.bucketList.map((item, index) => (
+                            <BucketItem key={index} done={item.done} label={item.label} />
+                        ))}
                     </div>
                 </FadeInSection>
 
@@ -105,25 +107,15 @@ export const About = () => {
                         <SectionTitle icon="yellow" title="My Setup" />
                     </div>
                     <div className="lg:col-span-8 grid md:grid-cols-2 gap-8">
-                        <ToolCategory title="Hardware" items={[
-                            "MacBook Pro M3 Max",
-                            "Keychron Q1 Pro",
-                            "Logitech MX Master 3S",
-                            "Dell UltraSharp 27\" 4K"
-                        ]} />
-                        <ToolCategory title="Software" items={[
-                            "VS Code + Cursor AI",
-                            "iTerm2 + Oh My Zsh",
-                            "Figma",
-                            "Notion"
-                        ]} />
+                        <ToolCategory title="Hardware" items={profile.hardware} />
+                        <ToolCategory title="Software" items={profile.software} />
                     </div>
                 </FadeInSection>
 
                 {/* 4. Connect/Links */}
                 <FadeInSection id="connect" className="text-center py-12">
                     <div className="inline-block p-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 cursor-pointer hover:scale-105 transition-transform duration-300">
-                        <a href="mailto:hello@manishvangara.com" className="block px-12 py-4 bg-white dark:bg-black rounded-full text-xl font-bold text-gray-900 dark:text-white hover:bg-transparent hover:text-white transition-colors">
+                        <a href={`mailto:${profile.email}`} className="block px-12 py-4 bg-white dark:bg-black rounded-full text-xl font-bold text-gray-900 dark:text-white hover:bg-transparent hover:text-white transition-colors">
                             Let's Build Something Together
                         </a>
                     </div>

@@ -7,7 +7,8 @@ export const Certifications = () => {
     const [showAll, setShowAll] = useState(false);
 
     // Display top 3 if collapsed, all if expanded
-    const displayedCerts = showAll ? certificationsData : certificationsData.slice(0, 3);
+    const safeCertData = certificationsData || [];
+    const displayedCerts = showAll ? safeCertData : safeCertData.slice(0, 3);
 
     return (
         <section id="certifications" className="py-24 bg-gray-50 dark:bg-zinc-900/50 relative overflow-hidden transition-colors duration-300">
@@ -76,7 +77,7 @@ export const Certifications = () => {
                     </AnimatePresence>
                 </motion.div>
 
-                {certificationsData.length > 3 && (
+                {safeCertData.length > 3 && (
                     <div className="mt-12 text-center">
                         <button
                             onClick={() => setShowAll(!showAll)}
@@ -88,7 +89,7 @@ export const Certifications = () => {
                                 </>
                             ) : (
                                 <>
-                                    View All ({certificationsData.length}) <ChevronDown size={18} />
+                                    View All ({safeCertData.length}) <ChevronDown size={18} />
                                 </>
                             )}
                         </button>

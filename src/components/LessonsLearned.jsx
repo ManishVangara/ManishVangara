@@ -40,7 +40,7 @@ export const LessonsLearned = () => {
                         >
                             {/* Decorative number */}
                             <span className="absolute top-6 right-8 text-8xl font-bold text-gray-100 dark:text-white/5 font-sans pointer-events-none select-none group-hover:scale-105 transition-transform duration-500">
-                                {item.id}
+                                {item.id || index + 1}
                             </span>
 
                             {/* Header */}
@@ -51,22 +51,22 @@ export const LessonsLearned = () => {
                                         : 'bg-orange-50/50 text-orange-600 border-orange-200 dark:bg-orange-500/10 dark:text-orange-400 dark:border-orange-500/20'
                                         }`}>
                                         <AlertTriangle className="w-3 h-3" />
-                                        {item.type}
+                                        {item.type || 'Insight'}
                                     </span>
                                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border bg-blue-50/50 text-blue-600 border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20">
                                         {getIconForDomain(item.domain)}
-                                        {item.domain}
+                                        {item.domain || 'General'}
                                     </span>
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-gray-900 group-hover:to-gray-600 dark:group-hover:from-white dark:group-hover:to-gray-400 transition-all duration-300">
-                                    {item.title}
+                                    {item.title || 'Untitled Lesson'}
                                 </h3>
                             </div>
 
                             {/* Description */}
                             <div className="relative z-10 mb-8">
                                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                    {item.description}
+                                    {item.description || 'No description provided.'}
                                 </p>
                             </div>
 
@@ -79,7 +79,7 @@ export const LessonsLearned = () => {
                                     <div>
                                         <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">The Lesson</h4>
                                         <p className="text-sm text-gray-600 dark:text-gray-400 italic">
-                                            "{item.lesson}"
+                                            "{item.lesson || 'Always keep learning.'}"
                                         </p>
                                     </div>
                                 </div>
