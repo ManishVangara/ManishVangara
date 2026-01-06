@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Linkedin, Mail, Laptop, Code, CheckCircle2, Circle, ArrowUpRight } from 'lucide-react';
 import { profile } from '../data/profile';
 
+import { QuoteBubble } from '../components/QuoteBubble';
+
 export const About = () => {
     return (
         <div className="min-h-screen pt-32 px-6 pb-24 overflow-x-hidden">
@@ -71,6 +73,8 @@ export const About = () => {
                     </div>
                 </FadeInSection>
 
+                <QuoteBubble quote={profile.quotes.about_story} />
+
                 {/* 2. Hobbies */}
                 <FadeInSection id="hobbies" className="grid lg:grid-cols-12 gap-12 items-start scroll-mt-32">
                     <div className="lg:col-span-4 sticky top-32">
@@ -90,6 +94,8 @@ export const About = () => {
                     </div>
                 </FadeInSection>
 
+                <QuoteBubble quote={profile.quotes.about_hobbies} />
+
                 {/* 3. Bucketlist */}
                 <FadeInSection id="bucketlist" className="grid lg:grid-cols-12 gap-12 items-start scroll-mt-32">
                     <div className="lg:col-span-4 sticky top-32">
@@ -101,6 +107,8 @@ export const About = () => {
                         ))}
                     </div>
                 </FadeInSection>
+
+                <QuoteBubble quote={profile.quotes.about_bucketlist} />
 
 
 
@@ -114,6 +122,8 @@ export const About = () => {
                         <ToolCategory title="Software" items={profile.software} />
                     </div>
                 </FadeInSection>
+
+                <QuoteBubble quote={profile.quotes.about_setup} />
 
                 {/* 4. Connect/Links */}
                 <FadeInSection id="connect" className="text-center py-12">

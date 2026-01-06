@@ -118,6 +118,21 @@ export const profile = {
         "Dell UltraSharp 27\" 4K"
     ],
 
+    quotes: {
+        // Home Page
+        home_hero: "Infrastructure is the unsung hero of data science.",
+        home_projects: "Theory is successfully proved only when put into practice.",
+        home_skills: "Tools are just extensions of the mind. Pick the right one.",
+        home_experience: "Every bug fixed is a lesson learned.",
+        home_connect: "Great things happen when we connect.",
+
+        // About Page
+        about_story: "Everyone has a story. This is just the beginning of mine.",
+        about_hobbies: "Work hard, play hard. Balance is key.",
+        about_bucketlist: "Dreams don't work unless you do.",
+        about_setup: "A good craftsman never blames his tools, but he sure loves good ones."
+    },
+
     software: [
         "VS Code + Warp",
         "AWS",
