@@ -3,51 +3,46 @@ export const experienceData = [
     {
         id: 1,
         type: "work",
-        title: "Senior Software Engineer",
-        company: "Tech Giant Corp",
-        period: "2023 - Present",
-        description: "Leading the development of scalable cloud architectures and AI-driven microservices.",
-        skills: ["React", "Node.js", "AWS", "System Design"]
+        title: "Data Scientist",
+        company: "Halliburton",
+        period: "August 2024 - Present",
+        description: "Spearheaded predictive maintenance initiatives and AI automation. Extracted complex drilling sensor data using advanced clustering techniques and decision tree algorithms, reducing non-productive time by 15%. Pioneers agentic AI system using LangChain to automate drilling parameter optimization.",
+        skills: ["Agentic AI", "Machine Learning", "Python"]
     },
     {
         id: 2,
-        type: "education",
-        title: "Master of Computer Science",
-        company: "Stanford University",
-        period: "2021 - 2023",
-        description: "Specialized in Artificial Intelligence and Distributed Systems. Graduated with Honors.",
-        skills: ["Machine Learning", "Distributed Systems", "Algorithms"]
+        type: "work",
+        title: "Graduate Data Scientist",
+        company: "University of Central Oklahoma",
+        period: "Jan 2024 - August 2024",
+        description: "Analyzed 15,000+ student records using clustering and regression analysis techniques. Developed RESTful API endpoints for ML model predictions with authentication, serving real-time student risk assessments.",
+        skills: ["AWS Glue", "REST APIs", "Data Mining"]
     },
     {
         id: 3,
-        type: "work",
-        title: "Software Engineer",
-        company: "Innovative Startup",
-        period: "2019 - 2021",
-        description: "Built the core MVP from scratch, handling both frontend and backend development.",
-        skills: ["JavaScript", "Python", "Docker", "PostgreSQL"]
+        type: "education",
+        title: "Master of Science in Data Science",
+        company: "University of Central Oklahoma",
+        period: "Aug 2023 - May 2025",
+        description: "Specialized in AI and Statistics. Presidential Honor Award. Coursework included Advanced Statistics, Machine Learning, Applied Regression, Artificial Intelligence, and Software Engineering.",
+        skills: ["Statistics", "AI", "Data Structures"]
     },
     {
         id: 4,
-        type: "education",
-        title: "Bachelor of Technology",
-        company: "Indian Institute of Technology",
-        period: "2015 - 2019",
-        description: "Major in Computer Science. President of the Coding Club.",
-        skills: ["Data Structures", "C++", "O.S."]
+        type: "work",
+        title: "Data Scientist",
+        company: "Vertocity",
+        period: "Jan 2020 - May 2023",
+        description: "Identified at-risk student populations using decision trees and random forests. Validated model reliability through rigorous statistical analysis using regression techniques and cross-validation methods.",
+        skills: ["Scikit-learn", "Statistical Analysis", "Predictive Modeling"]
     },
     {
         id: 5,
         type: "work",
-        title: "Freelance Developer",
-        // Missing company, period, description, skills to test robustness
-    },
-    {
-        id: 6,
-        type: "education",
-        title: "Online Certification",
-        company: "Coursera",
-        // Missing period and skills, but has description
-        description: "Completed Full Stack Web Development Specialization."
+        title: "Data Analyst",
+        company: "Vertocity",
+        period: "May 2019 - Aug 2019",
+        description: "Developed data pipelines using Python and SQL to process student performance data. Built initial prototypes of predictive models for student engagement tracking and created dashboards using Tableau.",
+        skills: ["SQL", "Tableau", "Python"]
     }
 ];
