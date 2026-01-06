@@ -1,22 +1,79 @@
 export const skills = [
     {
-        category: "Languages",
-        items: ["Python", "JavaScript/TypeScript", "SQL", "C++", "HTML/CSS"]
+        category: "Programming & Data Manipulation",
+        items: [
+            "Python",
+            "NumPy",
+            "Pandas",
+            "SciPy",
+            "Statsmodels",
+            "R",
+            "PostgreSQL",
+            "PySpark"
+        ]
     },
     {
-        category: "Machine Learning & AI",
-        items: ["PyTorch", "TensorFlow", "Scikit-Learn", "LangChain", "OpenAI API", "Hugging Face"]
+        category: "Data Mining & Statistical Methods",
+        items: [
+            "Clustering",
+            "SVM",
+            "KNN",
+            "PCA",
+            "Time Series Analysis",
+            "Hypothesis Testing"
+        ]
     },
     {
-        category: "Data Engineering",
-        items: ["Apache Airflow", "Kafka", "Snowflake", "dbt", "Spark", "Pandas"]
+        category: "Machine Learning & Advanced Analytics",
+        items: [
+            "Scikit-learn",
+            "PyTorch",
+            "TensorFlow",
+            "XGBoost",
+            "Random Forest",
+            "Gradient Boosting",
+            "Feature Engineering",
+            "Reinforcement Learning"
+        ]
     },
     {
-        category: "Web Development",
-        items: ["React", "FastAPI", "Node.js", "Tailwind CSS", "Next.js", "Flask"]
+        category: "Agentic AI & LLM Systems",
+        items: [
+            "LangChain",
+            "LangGraph",
+            "OpenAI API",
+            "Autonomous Agents",
+            "Multi-Agent Systems",
+            "ReAct Frameworks",
+            "Agent Memory Systems"
+        ]
     },
     {
-        category: "Tools & Platforms",
-        items: ["AWS", "Docker", "Kubernetes", "Git/GitHub", "Tableau", "PostgreSQL"]
+        category: "Natural Language Processing",
+        items: [
+            "Sentiment Analysis",
+            "Entity Recognition",
+            "Word Embeddings",
+            "Transformers"
+        ]
+    },
+    {
+        category: "Cloud & Data Platforms",
+        items: [
+            "AWS",
+            "Databricks",
+            "Snowflake",
+            "ETL Pipelines",
+            "Spark Streaming"
+        ]
+    },
+    {
+        category: "Data Visualization",
+        items: [
+            "Power BI",
+            "Tableau",
+            "Matplotlib",
+            "Seaborn"
+        ]
     }
 ];
