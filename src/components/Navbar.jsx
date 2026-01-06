@@ -37,7 +37,7 @@ export const Navbar = () => {
     const moreLinks = [
         { name: 'Bucketlist', href: '/about#bucketlist' },
         { name: 'Certifications', href: '/#certifications' },
-        { name: 'Lessons', href: '/about#lessons' },
+        { name: 'Lessons', href: '/#lessons' },
         { name: 'Hobbies', href: '/about#hobbies' },
     ];
 
