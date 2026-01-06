@@ -36,8 +36,8 @@ export const Navbar = () => {
 
     const moreLinks = [
         { name: 'Bucketlist', href: '/about#bucketlist' },
-        { name: 'Certifications', href: '#certifications' },
-        { name: 'Lessons', href: '#lessons' },
+        { name: 'Certifications', href: '/#certifications' },
+        { name: 'Lessons', href: '/about#lessons' },
         { name: 'Hobbies', href: '/about#hobbies' },
     ];
 
@@ -114,13 +114,23 @@ export const Navbar = () => {
                         {/* Dropdown Menu */}
                         <div className="absolute top-full right-0 mt-2 w-48 py-2 bg-white/90 dark:bg-black/90 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
                             {moreLinks.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-                                >
-                                    {link.name}
-                                </a>
+                                link.href.startsWith('/') ? (
+                                    <Link
+                                        key={link.name}
+                                        to={link.href}
+                                        className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                ) : (
+                                    <a
+                                        key={link.name}
+                                        href={link.href}
+                                        className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                                    >
+                                        {link.name}
+                                    </a>
+                                )
                             ))}
                         </div>
                     </li>
@@ -164,14 +174,25 @@ export const Navbar = () => {
                         {isMoreOpen && (
                             <div className="flex flex-col items-center gap-4 bg-black/5 dark:bg-white/5 w-full py-4 backdrop-blur-sm">
                                 {moreLinks.map((link) => (
-                                    <a
-                                        key={link.name}
-                                        href={link.href}
-                                        onClick={() => setIsMenuOpen(false)}
-                                        className="text-lg text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
-                                    >
-                                        {link.name}
-                                    </a>
+                                    link.href.startsWith('/') ? (
+                                        <Link
+                                            key={link.name}
+                                            to={link.href}
+                                            onClick={() => setIsMenuOpen(false)}
+                                            className="text-lg text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    ) : (
+                                        <a
+                                            key={link.name}
+                                            href={link.href}
+                                            onClick={() => setIsMenuOpen(false)}
+                                            className="text-lg text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                                        >
+                                            {link.name}
+                                        </a>
+                                    )
                                 ))}
                             </div>
                         )}

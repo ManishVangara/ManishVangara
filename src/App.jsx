@@ -11,7 +11,7 @@ import { Footer } from './components/Footer';
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white transition-colors duration-300">
         <ScrollToAnchor />
         <Navbar />

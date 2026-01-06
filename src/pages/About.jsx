@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Linkedin, Mail, Laptop, Code, CheckCircle2, Circle, ArrowUpRight } from 'lucide-react';
 import { profile } from '../data/profile';
+import { lessons } from '../data/lessons';
 
 export const About = () => {
     return (
@@ -101,6 +102,33 @@ export const About = () => {
                     </div>
                 </FadeInSection>
 
+                {/* 4. Lessons */}
+                <FadeInSection id="lessons" className="grid lg:grid-cols-12 gap-12 items-start scroll-mt-32">
+                    <div className="lg:col-span-4 sticky top-32">
+                        <SectionTitle icon="red" title="Lessons Learned" />
+                    </div>
+                    <div className="lg:col-span-8 space-y-6">
+                        {lessons.map((lesson) => (
+                            <div key={lesson.id} className={`p-6 bg-gray-50 dark:bg-zinc-900 rounded-3xl border-l-4 ${lesson.borderColor} shadow-sm hover:shadow-md transition-all duration-300`}>
+                                <div className="flex items-center gap-3 mb-2">
+                                    <span className="text-xs font-bold uppercase tracking-wider text-gray-400">{lesson.domain}</span>
+                                    <span className={`text-xs px-2 py-1 rounded-full ${lesson.type === 'Failure' ? 'bg-red-100 text-red-600 dark:bg-red-900/20 dark:text-red-400' : 'bg-orange-100 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400'}`}>
+                                        {lesson.type}
+                                    </span>
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{lesson.title}</h3>
+                                <p className="text-gray-600 dark:text-gray-400 mb-4">{lesson.description}</p>
+                                <div className="flex gap-3 items-start">
+                                    <span className="text-2xl">💡</span>
+                                    <p className="text-sm font-medium text-gray-800 dark:text-gray-200 italic">
+                                        "{lesson.lesson}"
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </FadeInSection>
+
                 {/* 5. Workstation Tools */}
                 <FadeInSection id="setup" className="grid lg:grid-cols-12 gap-12 items-start scroll-mt-32">
                     <div className="lg:col-span-4 sticky top-32">
@@ -134,6 +162,7 @@ const SectionTitle = ({ icon, title }) => {
         purple: 'bg-purple-600',
         green: 'bg-green-600',
         yellow: 'bg-yellow-600',
+        red: 'bg-red-500',
     };
 
     return (
