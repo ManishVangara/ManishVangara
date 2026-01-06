@@ -2,8 +2,10 @@
 import React, { useRef, useState } from 'react';
 import { experienceData } from '../data/experience';
 import { Briefcase, GraduationCap, Calendar, ArrowRight } from 'lucide-react';
+import { ScrollProgressWavyLine } from './ui/ScrollProgressWavyLine';
 
 export const Experience = () => {
+    const containerRef = useRef(null);
     return (
         <section id="experience" className="py-24 bg-white dark:bg-black relative overflow-hidden">
             {/* Background Grids */}
@@ -19,9 +21,11 @@ export const Experience = () => {
                     </p>
                 </div>
 
-                <div className="relative max-w-4xl mx-auto">
-                    {/* Unique Connector Line */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-transparent opacity-30 dark:opacity-50 hidden md:block rounded-full" />
+                <div ref={containerRef} className="relative max-w-4xl mx-auto">
+                    {/* Wavy Connector Line */}
+                    <ScrollProgressWavyLine containerRef={containerRef} />
+
+                    {/* Previous straight line removed */}
 
                     <div className="space-y-12 md:space-y-0 relative">
                         {experienceData.map((item, index) => (
