@@ -1,21 +1,31 @@
-
-import createGlobe from 'cobe';
-import { useEffect, useRef } from 'react';
+import createGlobe from 'cobe'
+import { useEffect, useRef } from 'react'
 
 export const Globe = ({ className }) => {
-    const canvasRef = useRef(null);
+    const canvasRef = useRef(null)
 
     useEffect(() => {
-        let phi = 0;
+        if (!canvasRef.current) return
 
-        if (!canvasRef.current) return;
+        const lat = 47.6062
+        const lon = -122.3328
+
+        const phi = (90 - lat) * (Math.PI / 180)
+        const baseTheta = (lon + 180) * (Math.PI / 180)
+
+        let theta = baseTheta
+        let dragging = false
+        let lastX = 0
+        let velocity = 0
 
         const globe = createGlobe(canvasRef.current, {
             devicePixelRatio: 2,
-            width: 600 * 2,
-            height: 600 * 2,
-            phi: 0,
-            theta: 0,
+            width: 1200,
+            height: 1200,
+
+            phi,
+            theta,
+
             dark: 1,
             diffuse: 1.2,
             mapSamples: 16000,
@@ -23,30 +33,67 @@ export const Globe = ({ className }) => {
             baseColor: [0.3, 0.3, 0.3],
             markerColor: [0.1, 0.8, 1],
             glowColor: [1, 1, 1],
-            markers: [
-                // San Francisco: 37.7749° N, 122.4194° W
-                { location: [37.7595, -122.4367], size: 0.1 }
-            ],
+
+            markers: [{ location: [lat, lon], size: 0.1 }],
+
             onRender: (state) => {
-                // Static: phi stays constant at the initial value (or whatever logic we want)
-                // Based on testing, phi 0 might be close to what we need, or we need to offset.
-                // To center SF (-122 deg), we might need to rotate the globe significantly.
-                // Let's hold it at 0 initially.
-                state.phi = phi;
+                // inertia when not dragging
+                if (!dragging) {
+                    velocity *= 0.95
+                    theta += velocity
+                }
+
+                state.theta = theta
+                state.phi = phi
             },
-        });
+        })
+
+        const sensitivity = 0.005
+
+        const onPointerDown = (e) => {
+            dragging = true
+            lastX = e.clientX
+            velocity = 0
+        }
+
+        const onPointerMove = (e) => {
+            if (!dragging) return
+            const deltaX = e.clientX - lastX
+            lastX = e.clientX
+
+            const deltaTheta = deltaX * sensitivity
+            theta += deltaTheta
+            velocity = deltaTheta
+        }
+
+        const onPointerUp = () => {
+            dragging = false
+        }
+
+        const canvas = canvasRef.current
+        canvas.addEventListener('pointerdown', onPointerDown)
+        window.addEventListener('pointermove', onPointerMove)
+        window.addEventListener('pointerup', onPointerUp)
 
         return () => {
-            globe.destroy();
-        };
-    }, []);
+            globe.destroy()
+            canvas.removeEventListener('pointerdown', onPointerDown)
+            window.removeEventListener('pointermove', onPointerMove)
+            window.removeEventListener('pointerup', onPointerUp)
+        }
+    }, [])
 
     return (
         <div className={`relative flex items-center justify-center w-full h-full overflow-hidden ${className}`}>
             <canvas
                 ref={canvasRef}
-                style={{ width: 600, height: 600, maxWidth: '100%', aspectRatio: 1 }}
+                style={{
+                    width: 600,
+                    height: 600,
+                    aspectRatio: 1,
+                    cursor: 'grab',
+                }}
             />
         </div>
-    );
-};
+    )
+}
