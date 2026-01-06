@@ -6,11 +6,14 @@ import { ProjectsPage } from './pages/ProjectsPage';
 import { ProjectDetails } from './pages/ProjectDetails';
 import { Blogs } from './pages/Blogs';
 import { BlogPost } from './pages/BlogPost';
+import { ScrollToAnchor } from './components/ScrollToAnchor';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white transition-colors duration-300">
+        <ScrollToAnchor />
         <Navbar />
         <main>
           <Routes>
@@ -22,6 +25,7 @@ function App() {
             <Route path="/blogs/:id" element={<BlogPost />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );

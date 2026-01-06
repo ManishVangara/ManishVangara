@@ -65,40 +65,49 @@ const TimelineItem = ({ item, index, isLeft }) => {
                     {/* Header */}
                     <div className="flex items-center justify-between mb-4">
                         <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium ${item.type === 'work'
-                                ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400'
-                                : 'bg-purple-100 text-purple-700 dark:bg-purple-500/10 dark:text-purple-400'
+                            ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400'
+                            : 'bg-purple-100 text-purple-700 dark:bg-purple-500/10 dark:text-purple-400'
                             }`}>
                             {item.type === 'work' ? <Briefcase size={12} /> : <GraduationCap size={12} />}
                             {item.type === 'work' ? 'Work' : 'Education'}
                         </span>
-                        <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm">
-                            <Calendar size={14} />
-                            {item.period}
-                        </div>
+                        {item.period && (
+                            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm">
+                                <Calendar size={14} />
+                                {item.period}
+                            </div>
+                        )}
                     </div>
 
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {item.title}
                     </h3>
-                    <div className="text-base font-medium text-gray-700 dark:text-gray-300 mb-4">
-                        {item.company}
-                    </div>
 
-                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
-                        {item.description}
-                    </p>
+                    {item.company && (
+                        <div className="text-base font-medium text-gray-700 dark:text-gray-300 mb-4">
+                            {item.company}
+                        </div>
+                    )}
+
+                    {item.description && (
+                        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                            {item.description}
+                        </p>
+                    )}
 
                     {/* Skills/Tags */}
-                    <div className="flex flex-wrap gap-2">
-                        {item.skills.map((skill, i) => (
-                            <span
-                                key={i}
-                                className="px-2.5 py-1 text-xs rounded-md bg-white dark:bg-black/40 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 group-hover:border-blue-500/20 transition-colors"
-                            >
-                                {skill}
-                            </span>
-                        ))}
-                    </div>
+                    {item.skills && item.skills.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                            {item.skills.map((skill, i) => (
+                                <span
+                                    key={i}
+                                    className="px-2.5 py-1 text-xs rounded-md bg-white dark:bg-black/40 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 group-hover:border-blue-500/20 transition-colors"
+                                >
+                                    {skill}
+                                </span>
+                            ))}
+                        </div>
+                    )}
 
                     {/* Decorative Arrow on Hover */}
                     <div className={`absolute top-1/2 -translate-y-1/2 ${isLeft ? '-right-12' : '-left-12'} opacity-0 group-hover:opacity-100 transition-all duration-300 transform ${isLeft ? '-translate-x-4 group-hover:translate-x-0' : 'translate-x-4 group-hover:translate-x-0'} hidden md:block`}>

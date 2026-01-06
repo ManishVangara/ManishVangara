@@ -35,5 +35,19 @@ export const experienceData = [
         period: "2015 - 2019",
         description: "Major in Computer Science. President of the Coding Club.",
         skills: ["Data Structures", "C++", "O.S."]
+    },
+    {
+        id: 5,
+        type: "work",
+        title: "Freelance Developer",
+        // Missing company, period, description, skills to test robustness
+    },
+    {
+        id: 6,
+        type: "education",
+        title: "Online Certification",
+        company: "Coursera",
+        // Missing period and skills, but has description
+        description: "Completed Full Stack Web Development Specialization."
     }
 ];
