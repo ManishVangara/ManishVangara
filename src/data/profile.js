@@ -30,6 +30,11 @@ export const profile = {
         linkedin: "https://linkedin.com/in/manishvangara"
     },
 
+    // Contact form
+    contact: {
+        formspreeEndpoint: "https://formspree.io/f/xrebngkl"
+    },
+
     // Resume
     resume: "/resume.pdf",
 

@@ -33,18 +33,55 @@ export const Connect = () => {
         setMessage(starters[topic.id] || "");
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setFormStatus('sending');
-        // Simulate sending
-        setTimeout(() => {
-            setFormStatus('success');
-            setTimeout(() => {
-                setFormStatus('idle');
-                setMessage('');
-                setActiveTopic(null);
-            }, 3000);
-        }, 1500);
+
+        try {
+            const formData = new FormData(e.target);
+            // Append the component state 'message' specifically if needed, 
+            // but the textarea has name="message" (wait, it didn't have name attribute in the view, let me check).
+            // Checked view: textarea id="message", but NO name="message". Input id="name" NO name. Input id="email" NO name.
+            // I MUST ADD NAME ATTRIBUTES to the inputs for FormData to work automatically, or construct it manually.
+
+            // Constructing manually since I might miss adding name attributes in a separate step.
+            // Actually, let's fix the inputs to have name attributes, it's cleaner.
+            // But for this tool call, I will stick to manual construction using IDs or the existing state if available.
+            // The inputs are not controlled components (except message).
+
+            const submitData = {
+                name: e.target.elements.name.value,
+                email: e.target.elements.email.value,
+                message: message,
+                topic: activeTopic || 'General'
+            };
+
+            const response = await fetch(profile.contact.formspreeEndpoint, {
+                method: 'POST',
+                body: JSON.stringify(submitData),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setFormStatus('success');
+                e.target.reset();
+                setTimeout(() => {
+                    setFormStatus('idle');
+                    setMessage('');
+                    setActiveTopic(null);
+                }, 3000);
+            } else {
+                setFormStatus('error');
+                setTimeout(() => setFormStatus('idle'), 3000);
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            setFormStatus('error');
+            setTimeout(() => setFormStatus('idle'), 3000);
+        }
     };
 
     return (
@@ -123,6 +160,7 @@ export const Connect = () => {
                                 <input
                                     type="text"
                                     id="name"
+                                    name="name"
                                     required
                                     className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-black/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
                                     placeholder="John Doe"
@@ -135,6 +173,7 @@ export const Connect = () => {
                                 <input
                                     type="email"
                                     id="email"
+                                    name="email"
                                     required
                                     className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-black/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
                                     placeholder="john@example.com"
@@ -146,6 +185,7 @@ export const Connect = () => {
                                 </label>
                                 <textarea
                                     id="message"
+                                    name="message"
                                     rows={4}
                                     required
                                     value={message}
@@ -171,6 +211,9 @@ export const Connect = () => {
                                 )}
                                 {formStatus === 'success' && (
                                     <>Message Sent! <Check size={18} /></>
+                                )}
+                                {formStatus === 'error' && (
+                                    <>Failed. Try Again.</>
                                 )}
                             </button>
                         </form>
