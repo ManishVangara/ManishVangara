@@ -20,8 +20,8 @@ export const ScrollToAnchor = () => {
                     }
                 }, 100);
             }
-        } else if (pathname !== '/') {
-            // Optional: Scroll to top on route change if no hash
+        } else {
+            // Scroll to top on route change if no hash
             window.scrollTo(0, 0);
         }
     }, [pathname, hash]);

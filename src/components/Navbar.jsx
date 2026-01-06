@@ -42,7 +42,10 @@ export const Navbar = () => {
     ];
 
     const isLinkActive = (path) => {
-        if (path === '/') return location.pathname === '/';
+        if (path === '/') return location.pathname === '/' && location.hash === '';
+        if (path.includes('#')) {
+            return location.pathname + location.hash === path;
+        }
         return location.pathname.startsWith(path);
     };
 
