@@ -1,4 +1,5 @@
 import { Download } from 'lucide-react';
+import heroBg from '../assets/hero-bg.png';
 import { useTypewriter } from '../hooks/useTypewriter';
 
 export const Hero = () => {
@@ -10,9 +11,15 @@ export const Hero = () => {
 
     return (
         <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-            {/* Background gradients */}
-            <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none mix-blend-multiply dark:mix-blend-normal" />
-            <div className="absolute top-1/2 -right-24 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl pointer-events-none mix-blend-multiply dark:mix-blend-normal" />
+            {/* Background Image & Overlay */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white dark:from-transparent dark:via-gray-900/50 dark:to-gray-900 z-10" />
+                <img
+                    src={heroBg}
+                    alt="Data Science Background"
+                    className="w-full h-full object-cover opacity-60 dark:opacity-40"
+                />
+            </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
                 {/* Greeting */}
