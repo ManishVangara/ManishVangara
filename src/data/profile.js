@@ -10,6 +10,9 @@ import {
 
 import heroBg from '../assets/hero-bg.png';
 import profilePhoto from '../assets/Manish_Vangara.jpeg';
+import catan from '../assets/catan.png';
+import badminton from '../assets/Badminton.png';
+import kunafa from '../assets/kunafa.png';
 
 export const profile = {
     // Identity
@@ -57,10 +60,46 @@ export const profile = {
 
     // Lists for About Page
     hobbies: [
-        { icon: Camera, label: "Photography", desc: "Capturing moments", color: "bg-pink-500/10 text-pink-600" },
-        { icon: Plane, label: "Traveling", desc: "Exploring cultures", color: "bg-blue-500/10 text-blue-600" },
-        { icon: Dice5, label: "Board Games & Badminton", desc: "Keeping Mind & Body Active", color: "bg-purple-500/10 text-purple-600" },
-        { icon: CookingPot, label: "Cooking", desc: "Crafting flavors", color: "bg-amber-500/10 text-amber-600" }
+        {
+            icon: Camera,
+            label: "Photography",
+            desc: "Capturing moments",
+            color: "bg-pink-500/10 text-pink-600",
+            images: [
+                "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1516961642265-531546e84af2?w=800&auto=format&fit=crop&q=60"
+            ]
+        },
+        {
+            icon: Plane,
+            label: "Traveling",
+            desc: "Exploring cultures",
+            color: "bg-blue-500/10 text-blue-600",
+            images: [
+                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop&q=60"
+            ]
+        },
+        {
+            icon: Dice5,
+            label: "Board Games & Badminton",
+            desc: "Keeping Mind & Body Active",
+            color: "bg-purple-500/10 text-purple-600",
+            images: [
+                catan,
+                badminton
+            ]
+        },
+        {
+            icon: CookingPot,
+            label: "Cooking",
+            desc: "Crafting flavors",
+            color: "bg-amber-500/10 text-amber-600",
+            images: [
+                kunafa,
+                "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&auto=format&fit=crop&q=60"
+            ]
+        }
     ],
 
     bucketList: [

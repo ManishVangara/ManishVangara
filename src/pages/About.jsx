@@ -84,6 +84,7 @@ export const About = () => {
                                 label={hobby.label}
                                 desc={hobby.desc}
                                 color={hobby.color}
+                                images={hobby.images}
                             />
                         ))}
                     </div>
@@ -169,15 +170,32 @@ const FadeInSection = ({ children, className, id }) => {
     );
 };
 
-const HobbyCard = ({ icon, label, desc, color }) => (
+const HobbyCard = ({ icon, label, desc, color, images }) => (
     <div className="relative group p-6 bg-gray-50 dark:bg-zinc-900 rounded-3xl border border-gray-200 dark:border-white/5 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-default">
         <div className={`absolute top-0 right-0 p-32 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${color.split(' ')[0]}`} />
 
-        <div className={`${color} w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
-            {icon}
+        <div className="relative z-10">
+            <div className={`${color} w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                {icon}
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{label}</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{desc}</p>
+
+            {images && (
+                <div className="grid grid-cols-2 gap-2 h-40 rounded-xl overflow-hidden">
+                    <img
+                        src={images[0]}
+                        alt={label}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <img
+                        src={images[1]}
+                        alt={label}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                </div>
+            )}
         </div>
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{label}</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{desc}</p>
     </div>
 );
 
