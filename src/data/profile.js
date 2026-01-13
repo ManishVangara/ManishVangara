@@ -10,9 +10,9 @@ import {
 
 import heroBg from '../assets/hero-bg.png';
 import profilePhoto from '../assets/Manish_Vangara.jpeg';
-import catan from '../assets/catan.png';
-import badminton from '../assets/Badminton.png';
-import kunafa from '../assets/kunafa.png';
+import catan from '../assets/catan.jpg';
+import badminton from '../assets/Badminton.jpg';
+import kunafa from '../assets/kunafa.jpg';
 
 export const profile = {
     // Identity

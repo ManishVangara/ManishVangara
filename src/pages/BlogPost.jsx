@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { blogs } from '../data/blogs';
-import { ArrowLeft, Calendar, Clock, Tag, Share2, Linkedin, Twitter } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, Tag, Share2, Linkedin, Twitter, ArrowUpRight } from 'lucide-react';
 
 export const BlogPost = () => {
     const { id } = useParams();

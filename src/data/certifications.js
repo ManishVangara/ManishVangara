@@ -43,14 +43,14 @@ export const certificationsData = [
         credentialId: "TF-55443322",
         url: "https://www.credential.net/",
         image: "https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg"
-    },
-    {
-        id: 6,
-        title: "Microsoft Certified: Azure Data Scientist Associate",
-        issuer: "Microsoft",
-        date: "2021",
-        credentialId: "AZ-112233",
-        url: "https://learn.microsoft.com/",
-        image: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg"
     }
+    // {
+    //     id: 6,
+    //     title: "Microsoft Certified: Azure Data Scientist Associate",
+    //     issuer: "Microsoft",
+    //     date: "2021",
+    //     credentialId: "AZ-112233",
+    //     url: "https://learn.microsoft.com/",
+    //     image: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg"
+    // }
 ];

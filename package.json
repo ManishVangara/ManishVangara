@@ -4,22 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/sync-notion.cjs && vite",
-    "sync-notion": "node scripts/sync-notion.cjs",
-    "build": "node scripts/sync-notion.cjs && vite build",
+    "dev": "vite",
+    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "cobe": "^0.6.5",
     "framer-motion": "^12.24.7",
-    "katex": "^0.16.27",
     "lucide-react": "^0.562.0",
-    "notion-client": "^7.7.3",
-    "prismjs": "^1.30.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-notion-x": "^7.7.3",
     "react-router-dom": "^7.11.0"
   },
   "devDependencies": {
