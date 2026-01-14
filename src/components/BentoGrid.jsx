@@ -1,6 +1,7 @@
 import { MapPin, Brain, Music, Coffee, Rocket, BookOpen, ArrowRight } from 'lucide-react';
 import { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
+import { profile } from '../data/profile';
 // import { Globe } from './ui/Globe';
 const Globe = lazy(() => import('./ui/Globe').then(module => ({ default: module.Globe })));
 
@@ -55,6 +56,15 @@ const AnimatedCounter = ({ end, duration = 2000 }) => {
 };
 
 export const BentoGrid = () => {
+    const [time, setTime] = useState(new Date());
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTime(new Date());
+        }, 60000); // Update every minute
+        return () => clearInterval(timer);
+    }, []);
+
     return (
         <section className="py-20 px-6 max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
@@ -80,7 +90,9 @@ export const BentoGrid = () => {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                             </span>
-                            <span className="text-xs font-medium text-gray-700 dark:text-gray-300">Seattle, WA</span>
+                            <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                                {time.toLocaleTimeString('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: '2-digit' })} PST
+                            </span>
                         </div>
                     </div>
 
@@ -88,7 +100,7 @@ export const BentoGrid = () => {
                         <div className="bg-blue-600/10 dark:bg-blue-500/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                             <MapPin className="text-blue-600 dark:text-blue-400" size={24} />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Based in Seattle</h3>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Based in {profile.location}</h3>
                         <p className="text-gray-600 dark:text-gray-400 text-sm mt-1 mb-4">Open to relocation & remote work.</p>
 
                         <Link to="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:gap-3 transition-all">
@@ -97,21 +109,39 @@ export const BentoGrid = () => {
                     </div>
                 </Card>
 
-                {/* 2. Curious About */}
-                <Card className="md:col-span-1 bg-gradient-to-br from-purple-500/5 to-blue-500/5 hover:from-purple-500/10 hover:to-blue-500/10">
+                {/* 2. Curious About -> The Learning Stack */}
+                <Card className="md:col-span-1 bg-zinc-50 dark:bg-zinc-900/50">
                     <div className="h-full flex flex-col justify-between">
-                        <div className="bg-purple-100 dark:bg-purple-500/20 w-10 h-10 rounded-full flex items-center justify-center">
-                            <Brain className="text-purple-600 dark:text-purple-400" size={20} />
+                        <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 rounded-full bg-red-500" />
+                            <div className="w-2 h-2 rounded-full bg-yellow-500" />
+                            <div className="w-2 h-2 rounded-full bg-green-500" />
+                            <span className="ml-2 text-xs font-mono text-gray-400">curiously_learning_about.sh</span>
                         </div>
-                        <div>
-                            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Curious about</h3>
-                            <div className="flex flex-wrap gap-2">
-                                {['LLMs', 'RAG', 'Agents'].map(tag => (
-                                    <span key={tag} className="text-xs px-2 py-1 bg-white dark:bg-white/10 rounded-md border border-gray-200 dark:border-white/5 text-gray-600 dark:text-gray-300">
-                                        {tag}
-                                    </span>
-                                ))}
+
+                        <div className="space-y-2 font-mono text-xs">
+                            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                                <span className="text-green-500">➜</span>
+                                <span className="text-blue-500">~</span>
+                                <span>current_focus</span>
                             </div>
+
+                            <div className="space-y-1 pl-4">
+                                <div className="flex items-center justify-between group/item">
+                                    <span className="text-gray-500 dark:text-gray-400">1. [ACTIVE]</span>
+                                    <span className="text-gray-900 dark:text-gray-200 font-medium">Agents</span>
+                                </div>
+                                <div className="flex items-center justify-between group/item">
+                                    <span className="text-gray-500 dark:text-gray-400">2. [BUILD]</span>
+                                    <span className="text-gray-900 dark:text-gray-200 font-medium">RAG Systems</span>
+                                </div>
+                                <div className="flex items-center justify-between group/item">
+                                    <span className="text-gray-500 dark:text-gray-400">3. [STUDY]</span>
+                                    <span className="text-gray-900 dark:text-gray-200 font-medium">Gen AI</span>
+                                </div>
+                            </div>
+
+                            <div className="animate-pulse text-green-500 mt-2">_</div>
                         </div>
                     </div>
                 </Card>
@@ -155,10 +185,22 @@ export const BentoGrid = () => {
                     </div>
                 </Card>
 
-                {/* 5. Projects Shipped */}
-                <Card className="md:col-span-1">
-                    <div className="h-full flex flex-col justify-between">
-                        <div className="bg-green-100 dark:bg-green-500/20 w-10 h-10 rounded-full flex items-center justify-center">
+                {/* 5. Projects Shipped -> Contribution Activity */}
+                <Card className="md:col-span-1 min-h-[180px] overflow-hidden">
+                    {/* Background Grid Pattern */}
+                    <div className="absolute inset-0 grid grid-cols-6 grid-rows-4 gap-1 p-2 opacity-20 dark:opacity-10 pointer-events-none">
+                        {Array.from({ length: 24 }).map((_, i) => (
+                            <div
+                                key={i}
+                                className={`rounded-sm transition-all duration-1000 ${[2, 5, 8, 12, 15, 19, 21].includes(i) ? 'bg-green-500 animate-pulse' : 'bg-gray-300 dark:bg-white/20'
+                                    }`}
+                                style={{ animationDelay: `${i * 100}ms` }}
+                            />
+                        ))}
+                    </div>
+
+                    <div className="relative h-full flex flex-col justify-between z-10">
+                        <div className="bg-green-100 dark:bg-green-500/20 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm">
                             <Rocket className="text-green-600 dark:text-green-400" size={20} />
                         </div>
                         <div>
