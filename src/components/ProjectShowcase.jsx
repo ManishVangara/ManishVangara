@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { QuoteBubble } from './QuoteBubble';
 import { allProjects } from '../data/projects';
 
 const projects = allProjects.slice(0, 4);
 const PLACEHOLDER_IMAGE = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80";
 
-export const ProjectShowcase = () => {
+export const ProjectShowcase = ({ quote }) => {
     const [activeProject, setActiveProject] = useState(0);
     const projectRefs = useRef([]);
 
@@ -176,6 +177,11 @@ export const ProjectShowcase = () => {
                         See All Projects
                         <ArrowRight size={20} />
                     </Link>
+                </div>
+
+                {/* Quote Integration */}
+                <div className="mt-24">
+                    <QuoteBubble quote={quote} />
                 </div>
             </div>
         </section>

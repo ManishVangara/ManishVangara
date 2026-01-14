@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import { Mail, Github, Linkedin, Twitter, ArrowRight, Send, Check, Copy } from 'lucide-react';
 import { profile } from '../data/profile';
+import { QuoteBubble } from './QuoteBubble';
 
-export const Connect = () => {
+export const Connect = ({ quote }) => {
     const [formStatus, setFormStatus] = useState('idle'); // idle, sending, success
     const [copied, setCopied] = useState(false);
     const [activeTopic, setActiveTopic] = useState(null);
@@ -219,6 +220,11 @@ export const Connect = () => {
                         </form>
                     </div>
 
+                </div>
+
+                {/* Quote Integration */}
+                <div className="mt-16">
+                    <QuoteBubble quote={quote} />
                 </div>
             </div>
         </section>

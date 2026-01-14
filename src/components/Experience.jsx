@@ -3,8 +3,9 @@ import React, { useRef, useState } from 'react';
 import { experienceData } from '../data/experience';
 import { Briefcase, GraduationCap, Calendar, ArrowRight } from 'lucide-react';
 import { ScrollProgressWavyLine } from './ui/ScrollProgressWavyLine';
+import { QuoteBubble } from './QuoteBubble';
 
-export const Experience = () => {
+export const Experience = ({ quote }) => {
     const containerRef = useRef(null);
     return (
         <section id="experience" className="py-24 bg-white dark:bg-black relative overflow-hidden">
@@ -37,6 +38,11 @@ export const Experience = () => {
                             />
                         ))}
                     </div>
+                </div>
+
+                {/* Quote Integration */}
+                <div className="mt-20">
+                    <QuoteBubble quote={quote} />
                 </div>
             </div>
         </section>

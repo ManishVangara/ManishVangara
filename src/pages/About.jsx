@@ -70,45 +70,48 @@ export const About = () => {
                                 {paragraph}
                             </p>
                         ))}
+                        <div className="mt-12">
+                            <QuoteBubble quote={profile.quotes.about_story} />
+                        </div>
                     </div>
                 </FadeInSection>
-
-                <QuoteBubble quote={profile.quotes.about_story} />
 
                 {/* 2. Hobbies */}
                 <FadeInSection id="hobbies" className="grid lg:grid-cols-12 gap-12 items-start scroll-mt-32">
                     <div className="lg:col-span-4 sticky top-32">
                         <SectionTitle icon="purple" title="Hobbies" />
                     </div>
-                    <div className="lg:col-span-8 grid grid-cols-2 gap-6">
-                        {profile.hobbies.map((hobby, index) => (
-                            <HobbyCard
-                                key={index}
-                                icon={<hobby.icon size={32} />}
-                                label={hobby.label}
-                                desc={hobby.desc}
-                                color={hobby.color}
-                                images={hobby.images}
-                            />
-                        ))}
+                    <div className="lg:col-span-8 space-y-12">
+                        <div className="grid grid-cols-2 gap-6">
+                            {profile.hobbies.map((hobby, index) => (
+                                <HobbyCard
+                                    key={index}
+                                    icon={<hobby.icon size={32} />}
+                                    label={hobby.label}
+                                    desc={hobby.desc}
+                                    color={hobby.color}
+                                    images={hobby.images}
+                                />
+                            ))}
+                        </div>
+                        <QuoteBubble quote={profile.quotes.about_hobbies} />
                     </div>
                 </FadeInSection>
-
-                <QuoteBubble quote={profile.quotes.about_hobbies} />
 
                 {/* 3. Bucketlist */}
                 <FadeInSection id="bucketlist" className="grid lg:grid-cols-12 gap-12 items-start scroll-mt-32">
                     <div className="lg:col-span-4 sticky top-32">
                         <SectionTitle icon="green" title="Bucket List" />
                     </div>
-                    <div className="lg:col-span-8 grid md:grid-cols-2 gap-4">
-                        {profile.bucketList.map((item, index) => (
-                            <BucketItem key={index} done={item.done} label={item.label} />
-                        ))}
+                    <div className="lg:col-span-8 space-y-12">
+                        <div className="grid md:grid-cols-2 gap-4">
+                            {profile.bucketList.map((item, index) => (
+                                <BucketItem key={index} done={item.done} label={item.label} />
+                            ))}
+                        </div>
+                        <QuoteBubble quote={profile.quotes.about_bucketlist} />
                     </div>
                 </FadeInSection>
-
-                <QuoteBubble quote={profile.quotes.about_bucketlist} />
 
 
 
@@ -117,13 +120,14 @@ export const About = () => {
                     <div className="lg:col-span-4 sticky top-32">
                         <SectionTitle icon="yellow" title="My Setup" />
                     </div>
-                    <div className="lg:col-span-8 grid md:grid-cols-2 gap-8">
-                        <ToolCategory title="Hardware" items={profile.hardware} />
-                        <ToolCategory title="Software" items={profile.software} />
+                    <div className="lg:col-span-8 space-y-12">
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <ToolCategory title="Hardware" items={profile.hardware} />
+                            <ToolCategory title="Software" items={profile.software} />
+                        </div>
+                        <QuoteBubble quote={profile.quotes.about_setup} />
                     </div>
                 </FadeInSection>
-
-                <QuoteBubble quote={profile.quotes.about_setup} />
 
                 {/* 4. Connect/Links */}
                 <FadeInSection id="connect" className="text-center py-12">
