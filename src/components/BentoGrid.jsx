@@ -1,7 +1,8 @@
 import { MapPin, Brain, Music, Coffee, Rocket, BookOpen, ArrowRight } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
-import { Globe } from './ui/Globe';
+// import { Globe } from './ui/Globe';
+const Globe = lazy(() => import('./ui/Globe').then(module => ({ default: module.Globe })));
 
 const Card = ({ children, className = "" }) => (
     <div className={`bg-white/50 dark:bg-zinc-900/50 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-3xl p-6 overflow-hidden relative group hover:border-blue-500/30 transition-all duration-300 ${className}`}>
@@ -61,7 +62,9 @@ export const BentoGrid = () => {
                 {/* 1. Location Card - Large 2x2 */}
                 <Card className="md:col-span-2 md:row-span-2 min-h-[300px] relative flex flex-col justify-between">
                     <div className="absolute inset-0 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity duration-500">
-                        <Globe className="w-full h-full" />
+                        <Suspense fallback={<div className="w-full h-full bg-gray-100 dark:bg-zinc-800 animate-pulse" />}>
+                            <Globe className="w-full h-full" />
+                        </Suspense>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-black dark:via-transparent" />
 

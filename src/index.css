@@ -29,6 +29,7 @@ body {
     animation: wave 2.5s infinite;
     transform-origin: 70% 70%;
     display: inline-block;
+    will-change: transform;
   }
 
   .font-handwriting {
@@ -37,11 +38,13 @@ body {
 
   .animate-fadeInUp {
     animation: fadeInUp 0.5s ease-out forwards;
+    will-change: transform, opacity;
   }
 
   /* Skills Marquee Animation */
   .animate-scroll {
     animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+    will-change: transform;
   }
 }
 
