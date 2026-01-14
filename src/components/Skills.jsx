@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { skills } from '../data/skills';
+import { QuoteBubble } from './QuoteBubble';
 
 // Helper to map skill names to SimpleIcons slugs and brand colors
 const getIconData = (skillName) => {
@@ -70,7 +71,7 @@ const getIconData = (skillName) => {
     return slugMap[skillName] || { slug: "codeigniter", color: "#666" };
 };
 
-export const Skills = () => {
+export const Skills = ({ quote }) => {
     // Categories indices:
     // 0: Programming & Data
     // 1: Data Mining & Stats
@@ -121,6 +122,11 @@ export const Skills = () => {
             {/* Gradient overlays for seamless fade effect on edges */}
             <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-white dark:from-black to-transparent z-20"></div>
             <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-white dark:from-black to-transparent z-20"></div>
+
+            {/* Quote Integration */}
+            <div className="relative z-10 mt-24">
+                <QuoteBubble quote={quote} />
+            </div>
         </section>
     );
 };
