@@ -71,6 +71,7 @@ export const ProjectShowcase = () => {
                                         <img
                                             src={project.image || PLACEHOLDER_IMAGE}
                                             alt={project.title || 'Project Image'}
+                                            loading="lazy"
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
                                         {/* Overlay */}

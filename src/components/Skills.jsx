@@ -29,7 +29,7 @@ const getIconData = (skillName) => {
         "Scikit-learn": { slug: "scikitlearn", color: "#F7931E" },
         "PyTorch": { slug: "pytorch", color: "#EE4C2C" },
         "TensorFlow": { slug: "tensorflow", color: "#FF6F00" },
-        "XGBoost": { slug: "xgboost", color: "#3B4752" },
+        "XGBoost": { slug: "python", color: "#3B4752" }, // XGBoost icon missing in simple-icons, fallback to python
         "Random Forest": { slug: "scikitlearn", color: "#F7931E" },
         "Gradient Boosting": { slug: "scikitlearn", color: "#F7931E" },
         "Ensemble Methods": { slug: "scikitlearn", color: "#F7931E" },
@@ -53,7 +53,7 @@ const getIconData = (skillName) => {
         "Transformers": { slug: "huggingface", color: "#FFD21E" },
 
         // Cloud & Platforms
-        "AWS": { slug: "amazonwebservices", color: "#232F3E" },
+        "AWS": { slug: "amazon", color: "#232F3E" },
         "Databricks": { slug: "databricks", color: "#FF3621" },
         "Snowflake": { slug: "snowflake", color: "#29B5E8" },
         "ETL Pipelines": { slug: "apacheairflow", color: "#017CEE" },
@@ -140,7 +140,7 @@ const MarqueeRow = ({ items, direction = "left", speed = 40 }) => {
     return (
         <div
             ref={containerRef}
-            className="scroller relative z-20 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)]"
+            className="scroller relative z-20 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)] will-change-transform"
         >
             <ul
                 className={`flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap
@@ -160,11 +160,19 @@ const MarqueeRow = ({ items, direction = "left", speed = 40 }) => {
                         >
                             <div className="flex flex-row items-center justify-start gap-4">
                                 <div className="h-10 w-10 flex-shrink-0 rounded-lg bg-gray-100 dark:bg-zinc-800 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-300">
-                                    <img
-                                        src={`https://cdn.simpleicons.org/${slug}/${color.replace('#', '')}`}
-                                        alt={item}
-                                        className="h-full w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-                                        onError={(e) => { e.target.style.display = 'none'; }}
+                                    <div
+                                        className="h-full w-full"
+                                        style={{
+                                            backgroundColor: color,
+                                            maskImage: `url(https://cdn.jsdelivr.net/npm/simple-icons/icons/${slug}.svg)`,
+                                            WebkitMaskImage: `url(https://cdn.jsdelivr.net/npm/simple-icons/icons/${slug}.svg)`,
+                                            maskSize: 'contain',
+                                            WebkitMaskSize: 'contain',
+                                            maskRepeat: 'no-repeat',
+                                            WebkitMaskRepeat: 'no-repeat',
+                                            maskPosition: 'center',
+                                            WebkitMaskPosition: 'center'
+                                        }}
                                     />
                                 </div>
 
