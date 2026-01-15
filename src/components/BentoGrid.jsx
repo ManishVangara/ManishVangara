@@ -3,7 +3,74 @@ import { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { profile } from '../data/profile';
 // import { Globe } from './ui/Globe';
+import { useLastFM } from '../hooks/useLastFM';
 const Globe = lazy(() => import('./ui/Globe').then(module => ({ default: module.Globe })));
+
+const MusicCard = () => {
+    const { musicData, loading } = useLastFM();
+
+    if (loading || !musicData) {
+        return (
+            <Card className="md:col-span-1 border-pink-500/20 group">
+                <div className="h-full flex flex-col justify-between">
+                    <div className="flex justify-between items-start">
+                        <div className="bg-pink-100 dark:bg-pink-500/20 w-10 h-10 rounded-full flex items-center justify-center">
+                            <Music className="text-pink-600 dark:text-pink-400" size={20} />
+                        </div>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">Offline</h3>
+                        <p className="text-pink-600 dark:text-pink-400 text-sm font-medium">Spotify not connected</p>
+                    </div>
+                </div>
+            </Card>
+        );
+    }
+
+    return (
+        <a href={musicData.url} target="_blank" rel="noopener noreferrer" className="block h-full">
+            <Card className="md:col-span-1 h-full p-0 overflow-hidden relative group border-0 ring-1 ring-gray-200 dark:ring-white/10">
+                {/* Background Art */}
+                <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                    style={{ backgroundImage: `url(${musicData.art})` }}
+                />
+                <div className="absolute inset-0 bg-black/50 backdrop-blur-sm group-hover:backdrop-blur-md transition-all duration-300" />
+
+                <div className="relative h-full p-6 flex flex-col justify-between z-10">
+                    <div className="flex justify-between items-start">
+                        <div className="bg-green-500/20 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10">
+                            {musicData.isPlaying ? (
+                                <div className="flex items-end gap-1 h-4">
+                                    <div className="w-1 bg-green-500 rounded-t animate-[music_1s_ease-in-out_infinite]" style={{ height: '40%' }}></div>
+                                    <div className="w-1 bg-green-500 rounded-t animate-[music_1.2s_ease-in-out_infinite_0.1s]" style={{ height: '80%' }}></div>
+                                    <div className="w-1 bg-green-500 rounded-t animate-[music_0.8s_ease-in-out_infinite_0.2s]" style={{ height: '50%' }}></div>
+                                </div>
+                            ) : (
+                                <Music className="text-green-400" size={20} />
+                            )}
+                        </div>
+                    </div>
+
+                    <div>
+                        <div className="flex items-center gap-2 mb-1">
+                            <span className={`w-2 h-2 rounded-full ${musicData.isPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`} />
+                            <span className="text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                {musicData.isPlaying ? 'Listening To' : 'Last Played'}
+                            </span>
+                        </div>
+                        <h3 className="text-lg font-bold text-white leading-tight line-clamp-1" title={musicData.name}>
+                            {musicData.name}
+                        </h3>
+                        <p className="text-gray-300 text-sm font-medium line-clamp-1" title={musicData.artist}>
+                            {musicData.artist}
+                        </p>
+                    </div>
+                </div>
+            </Card>
+        </a>
+    );
+};
 
 const Card = ({ children, className = "" }) => (
     <div className={`bg-white/50 dark:bg-zinc-900/50 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-3xl p-6 overflow-hidden relative group hover:border-blue-500/30 transition-all duration-300 ${className}`}>
@@ -148,25 +215,8 @@ export const BentoGrid = () => {
 
                 {/* 3. Music */}
                 <Card className="md:col-span-1 border-pink-500/20 group">
-                    <div className="h-full flex flex-col justify-between">
-                        <div className="flex justify-between items-start">
-                            <div className="bg-pink-100 dark:bg-pink-500/20 w-10 h-10 rounded-full flex items-center justify-center">
-                                <Music className="text-pink-600 dark:text-pink-400" size={20} />
-                            </div>
-                            {/* Visualizer Animation */}
-                            <div className="flex items-end gap-1 h-6">
-                                <div className="w-1 bg-pink-500/50 rounded-t animate-[music_1s_ease-in-out_infinite]" style={{ height: '40%' }}></div>
-                                <div className="w-1 bg-pink-500/50 rounded-t animate-[music_1.2s_ease-in-out_infinite_0.1s]" style={{ height: '80%' }}></div>
-                                <div className="w-1 bg-pink-500/50 rounded-t animate-[music_0.8s_ease-in-out_infinite_0.2s]" style={{ height: '50%' }}></div>
-                                <div className="w-1 bg-pink-500/50 rounded-t animate-[music_1.1s_ease-in-out_infinite_0.3s]" style={{ height: '70%' }}></div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Coding to</h3>
-                            <p className="text-pink-600 dark:text-pink-400 text-sm font-medium">Lo-fi Beats</p>
-                        </div>
-                    </div>
+                    {/* 3. Music */}
+                    <MusicCard />
                 </Card>
 
                 {/* 4. Coffee Counter */}
