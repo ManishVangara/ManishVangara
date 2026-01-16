@@ -3,7 +3,7 @@ export const experienceData = [
     {
         id: 1,
         type: "work",
-        title: "Data Scientist",
+        title: "Data Engineer",
         company: "Halliburton",
         period: "August 2024 - Present",
         description: "Spearheaded predictive maintenance initiatives and AI automation. Extracted complex drilling sensor data using advanced clustering techniques and decision tree algorithms, reducing non-productive time by 15%. Pioneers agentic AI system using LangChain to automate drilling parameter optimization.",
@@ -12,7 +12,7 @@ export const experienceData = [
     {
         id: 2,
         type: "work",
-        title: "Graduate Data Scientist",
+        title: "Data Engineer",
         company: "University of Central Oklahoma",
         period: "Jan 2024 - August 2024",
         description: "Analyzed 15,000+ student records using clustering and regression analysis techniques. Developed RESTful API endpoints for ML model predictions with authentication, serving real-time student risk assessments.",
