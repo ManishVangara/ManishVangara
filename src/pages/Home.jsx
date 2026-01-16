@@ -14,8 +14,8 @@ import { profile } from '../data/profile';
 export const Home = () => {
     return (
         <>
-            <Hero quote={profile.quotes.home_hero} />
-            <BentoGrid />
+            <Hero />
+            <BentoGrid quote={profile.quotes.home_hero} />
             <ProjectShowcase quote={profile.quotes.home_projects} />
             <Skills quote={profile.quotes.home_skills} />
             <Experience quote={profile.quotes.home_experience} />

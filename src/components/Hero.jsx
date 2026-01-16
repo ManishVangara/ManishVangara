@@ -1,9 +1,8 @@
 import { Download } from 'lucide-react';
 import { profile } from '../data/profile';
 import { TextLoop } from './ui/TextLoop';
-import { QuoteBubble } from './QuoteBubble';
 
-export const Hero = ({ quote }) => {
+export const Hero = () => {
 
 
     return (
@@ -68,10 +67,6 @@ export const Hero = ({ quote }) => {
                         <Download size={20} />
                         Resume
                     </a>
-                </div>
-                {/* Quote Integration */}
-                <div className="relative z-10 mt-16">
-                    <QuoteBubble quote={quote} />
                 </div>
             </div>
         </section>

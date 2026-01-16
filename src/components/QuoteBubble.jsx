@@ -1,14 +1,14 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-export const QuoteBubble = ({ quote }) => {
+export const QuoteBubble = ({ quote, className = "" }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { margin: "-20% 0px -20% 0px" });
 
     if (!quote) return null;
 
     return (
-        <div ref={ref} className="flex justify-center py-16 overflow-visible">
+        <div ref={ref} className={`flex justify-center py-16 overflow-visible ${className}`}>
             <motion.div
                 initial={{ scale: 0.8, opacity: 0, y: 30 }}
                 animate={isInView ? { scale: 1, opacity: 1, y: 0 } : { scale: 0.8, opacity: 0, y: 30 }}

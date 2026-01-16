@@ -122,7 +122,9 @@ const AnimatedCounter = ({ end, duration = 2000 }) => {
     return <span ref={countRef}>{count}</span>;
 };
 
-export const BentoGrid = () => {
+import { QuoteBubble } from './QuoteBubble';
+
+export const BentoGrid = ({ quote }) => {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -284,6 +286,16 @@ export const BentoGrid = () => {
                         </a>
                     </div>
                 </Card>
+
+                {/* 7. Quote - Wide (Beside Lessons Learned or below depending on grid flow, but actually Lessons Learned is col-span-2 so we have 2 cols left in a 4 col grid if it's on the same row, wait.
+                   Row 1: Location (2x2), Curious (1), Music (1) -> 4 cols occupied.
+                   Row 2: Location (cont.), Coffee (1), Projects (1) -> 4 cols occupied.
+                   Row 3: Lessons Learned (2) -> 2 cols busy, 2 cols free.
+                   Perfect spot for Quote (2).
+                */}
+                <div className="md:col-span-2 flex items-center justify-center">
+                    <QuoteBubble quote={quote} className="!py-0" />
+                </div>
 
             </div>
         </section>
