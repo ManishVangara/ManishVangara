@@ -61,7 +61,7 @@ export const Navbar = () => {
                 </div>
 
                 {/* Socials & Theme Toggle (Desktop) */}
-                <div className="hidden md:flex items-center gap-4 pointer-events-auto bg-white/50 dark:bg-black/20 backdrop-blur-md p-2 rounded-full border border-gray-200 dark:border-white/10 transition-colors duration-300">
+                <div className="hidden md:flex items-center gap-4 pointer-events-auto bg-[#F3F0E6]/50 dark:bg-black/20 backdrop-blur-md p-2 rounded-full border border-gray-200 dark:border-white/10 transition-colors duration-300">
                     <SocialLink href={profile.socials.github} icon={<Github size={20} />} label="GitHub" />
                     <SocialLink href={profile.socials.linkedin} icon={<Linkedin size={20} />} label="LinkedIn" />
                     <div className="w-px h-6 bg-gray-300 dark:bg-white/20 mx-1" />
@@ -78,7 +78,7 @@ export const Navbar = () => {
                 <div className="md:hidden pointer-events-auto">
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="p-2 rounded-full bg-white/50 dark:bg-black/20 backdrop-blur-md border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white transition-colors duration-300"
+                        className="p-2 rounded-full bg-[#F3F0E6]/50 dark:bg-black/20 backdrop-blur-md border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white transition-colors duration-300"
                     >
                         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
@@ -86,7 +86,7 @@ export const Navbar = () => {
             </div>
 
             {/* Floating Center Navigation (Desktop) */}
-            <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-40 hidden md:flex items-center px-2 py-2 rounded-full border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-black/50 backdrop-blur-xl transition-all duration-300 ${scrolled ? 'shadow-2xl shadow-blue-500/10' : ''}`}>
+            <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-40 hidden md:flex items-center px-2 py-2 rounded-full border border-gray-200 dark:border-white/10 bg-[#F3F0E6]/50 dark:bg-black/50 backdrop-blur-xl transition-all duration-300 ${scrolled ? 'shadow-2xl shadow-blue-500/10' : ''}`}>
                 <ul className="flex items-center gap-1">
                     {navLinks.map((link) => (
                         <li key={link.name}>
@@ -115,7 +115,7 @@ export const Navbar = () => {
                         </button>
 
                         {/* Dropdown Menu */}
-                        <div className="absolute top-full right-0 mt-2 w-48 py-2 bg-white/90 dark:bg-black/90 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
+                        <div className="absolute top-full right-0 mt-2 w-48 py-2 bg-[#F3F0E6]/90 dark:bg-black/90 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
                             {moreLinks.map((link) => (
                                 link.href.startsWith('/') ? (
                                     <Link
@@ -142,7 +142,7 @@ export const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             {isMenuOpen && (
-                <div className="fixed inset-0 z-30 bg-white/95 dark:bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-6 md:hidden overflow-y-auto transition-colors duration-300">
+                <div className="fixed inset-0 z-30 bg-[#F3F0E6]/95 dark:bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-6 md:hidden overflow-y-auto transition-colors duration-300">
                     {navLinks.map((link) => (
                         link.path.startsWith('/') ? (
                             <Link

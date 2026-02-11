@@ -9,7 +9,7 @@ export const Hero = () => {
         <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
             {/* Background Image & Overlay */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white dark:from-transparent dark:via-gray-900/50 dark:to-gray-900 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#F3F0E6]/50 to-[#F3F0E6] dark:from-transparent dark:via-gray-900/50 dark:to-gray-900 z-10" />
                 <img
                     src={profile.hero.background}
                     alt="Data Science Background"
