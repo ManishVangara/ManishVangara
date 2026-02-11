@@ -19,7 +19,7 @@ export const profile = {
     name: "Manish Vangara",
     firstName: "Manish",
     lastName: "Vangara",
-    role: "Data Scientist & Data Engineer",
+    role: "Data Analyst",
     location: "Seattle",
     email: "manish.vangara16@gmail.com",
     logoText: "MANISH",
@@ -42,9 +42,9 @@ export const profile = {
     hero: {
         background: heroBg,
         typewriter: [
-            "Building Scalable Data Infrastructure",
-            "Deriving Actionable Insights from Data",
-            "Engineering Robust AI Solutions"
+            "Data Analyst",
+            "Data Engineer",
+            "Data Scientist"
         ],
         tagline: "Crafting intelligent systems from chaos. Passionate about uncovering stories hidden within data and building scalable infrastructure to tell them."
     },

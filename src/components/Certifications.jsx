@@ -37,7 +37,7 @@ export const Certifications = () => {
                                 {/* Decorative gradient blob */}
                                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-colors" />
 
-                                <div className="flex items-start justify-between mb-6">
+                                <div className="relative z-10 flex items-start justify-between mb-6">
                                     <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-2xl text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
                                         <Award size={32} />
                                     </div>

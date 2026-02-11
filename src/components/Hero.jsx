@@ -28,10 +28,7 @@ export const Hero = () => {
                     {profile.firstName} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-600">{profile.lastName}</span>
                 </h1>
 
-                {/* Role */}
-                <h2 className="text-xl md:text-2xl font-medium text-blue-600 dark:text-blue-400 mb-6 tracking-wide uppercase">
-                    {profile.role}
-                </h2>
+
 
                 {/* Text Loop Effect */}
                 <div className="min-h-[40px] md:min-h-[60px] mb-8 flex items-center justify-center">

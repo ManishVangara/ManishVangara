@@ -1,79 +1,70 @@
 export const skills = [
     {
-        category: "Programming & Data Manipulation",
+        category: "Core Programming",
         items: [
-            "Python",
-            "NumPy",
-            "Pandas",
-            "SciPy",
-            "Statsmodels",
-            "R",
-            "PostgreSQL",
-            "PySpark"
+            "SQL (PostgreSQL, MySQL, Redshift, Snowflake)",
+            "Python (Pandas, NumPy, Scikit-learn)",
+            "Excel (VLOOKUP, PIVOT, VBA)",
+            "R"
         ]
     },
     {
-        category: "Data Mining & Statistical Methods",
+        category: "Visualization",
         items: [
-            "Clustering",
-            "SVM",
-            "KNN",
-            "PCA",
-            "Time Series Analysis",
-            "Hypothesis Testing"
-        ]
-    },
-    {
-        category: "Machine Learning & Advanced Analytics",
-        items: [
-            "Scikit-learn",
-            "PyTorch",
-            "TensorFlow",
-            "XGBoost",
-            "Random Forest",
-            "Gradient Boosting",
-            "Feature Engineering",
-            "Reinforcement Learning"
-        ]
-    },
-    {
-        category: "Agentic AI & LLM Systems",
-        items: [
-            "LangChain",
-            "LangGraph",
-            "OpenAI API",
-            "Autonomous Agents",
-            "Multi-Agent Systems",
-            "ReAct Frameworks",
-            "Agent Memory Systems"
-        ]
-    },
-    {
-        category: "Natural Language Processing",
-        items: [
-            "Sentiment Analysis",
-            "Entity Recognition",
-            "Word Embeddings",
-            "Transformers"
-        ]
-    },
-    {
-        category: "Cloud & Data Platforms",
-        items: [
-            "AWS",
-            "Databricks",
-            "Snowflake",
-            "ETL Pipelines",
-            "Spark Streaming"
-        ]
-    },
-    {
-        category: "Data Visualization",
-        items: [
-            "Power BI",
+            "Power BI (DAX)",
             "Tableau",
             "Matplotlib",
             "Seaborn"
+        ]
+    },
+    {
+        category: "Statistical Methods",
+        items: [
+            "A/B Testing",
+            "Hypothesis Testing",
+            "Regression",
+            "Cohort Analysis",
+            "Forecasting (ARIMA, Prophet)"
+        ]
+    },
+    {
+        category: "Data Engineering & Pipeline",
+        items: [
+            "AWS Glue",
+            "Apache Airflow",
+            "Azure Data Factory",
+            "ETL development in Python"
+        ]
+    },
+    {
+        category: "Domain Knowledge",
+        items: [
+            "Revenue Recognition",
+            "MRR/ARR",
+            "Churn Analysis",
+            "CLV",
+            "Billing Reconciliation",
+            "SaaS Metrics"
+        ]
+    },
+    {
+        category: "Machine Learning",
+        items: [
+            "Scikit-learn",
+            "Random Forest",
+            "XGBoost",
+            "Predictive Modeling",
+            "Anomaly Detection"
+        ]
+    },
+    {
+        category: "Platforms",
+        items: [
+            "AWS (S3, Glue, Redshift)",
+            "Azure",
+            "Salesforce",
+            "Snowflake",
+            "BigQuery"
         ]
     }
 ];
