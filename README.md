@@ -1,37 +1,50 @@
-# Hi, I'm Manish 👋  
-### **Data Scientist / AI Engineer**
+# Hi, I'm Manish 👋
 
-I build intelligent systems, scalable data workflows, and production-grade AI applications.
+### **Data Analyst | Business Analyst | Data Engineer**
+
+I turn raw billing data, sensor streams, and customer records into clean pipelines, trusted dashboards, and models that actually change decisions.
 
 ---
 
 ## 🚀 About Me
-- 🔭 Currently focused on AI engineering & automation  
-- 🤖 Exploring LLM pipelines, agents, and workflow tools  
-- 🧠 5+ years experience with Python, SQL, cloud data systems  
-- ⚡ Passionate about scalable architecture and practical AI  
+
+- 📊 4+ years analyzing revenue, operations, and customer data across SaaS and industrial domains
+- 🔧 Built ETL pipelines that compressed 8-hour jobs into 30 minutes (AWS Glue, Airflow, Python)
+- 🤖 Developed anomaly detection and predictive models in production at Halliburton and Vertocity
+- 📈 25+ Power BI and Tableau dashboards used by finance, operations, and executive teams
+- 🎓 MS in Data Science | Google & IBM Certified
 
 ---
 
 ## 🛠️ Tech Stack
-**Languages:** Python, SQL, JavaScript (for tooling only)  
-**AI/ML:** TensorFlow, PyTorch, scikit-learn, LLMs (OpenAI, fine-tuning, embeddings)  
-**Backend:** FastAPI, Flask, REST APIs  
-**Data/Cloud:** PostgreSQL, Snowflake, Spark, Firebase, Docker  
-**Tools:** Git, Linux, VSCode, Streamlit, n8n, Airflow  
+
+**Languages:** Python (Pandas, NumPy, Scikit-learn), SQL (PostgreSQL, MySQL, Redshift, Snowflake), R, Excel (VBA)
+
+**Visualization:** Power BI (DAX), Tableau, Looker, Matplotlib, Seaborn
+
+**ML & Statistics:** Random Forest, XGBoost, Isolation Forest, A/B Testing, Regression, ARIMA, Prophet
+
+**Data Engineering:** AWS Glue, Apache Airflow, Azure Data Factory, ETL Development in Python
+
+**Platforms:** AWS (S3, Glue, Redshift), Azure, Snowflake, BigQuery, Salesforce
 
 ---
 
-## 📂 Featured Projects  
-*(You can update these when your repo links are ready)*
+## 📂 Featured Projects
 
-- **Smart Data Query Assistant** – LLM-powered syllabus querying  
-- **Multi-Engine Speech-to-Text App** – Whisper + 3 STT Engines  
-- **Spotify Data Mining Project** – ML analysis on 1.1M tracks  
-- **ETL & Data Engineering Utilities** – Python + SQL  
+🔹 **[Payment Transaction Fraud Detection & Financial Monitoring](repo-link)**
+Real-time fraud detection system analyzing 500K+ monthly transactions using Isolation Forest and Z-score anomaly detection. Reduced false positives by 35% with Tableau monitoring dashboards.
 
-> Replace the above items with:  
-> `- [Project Name](repo-link)` when ready.
+🔹 **[SaaS Revenue Analytics & Pipeline Forecasting](repo-link)**
+End-to-end revenue analytics solution with Python ETL pipeline consolidating 200K+ customer records from Salesforce and billing platforms into Snowflake. Prophet forecasting models predicting MRR/ARR with 91% accuracy.
+
+🔹 **[Retail Customer Segmentation & Lifetime Value Analysis](repo-link)**
+RFM analysis and K-means clustering on 100K+ customers to segment by purchasing behavior and lifetime value. Drove 18% increase in targeted marketing ROI.
+
+🔹 **[Spotify Music Data Mining & Recommendation Engine](repo-link)**
+Data mining on 170K+ Spotify tracks. K-means clustering into 6 genre categories (78% accuracy) and content-based recommendation engine using cosine similarity (0.82 correlation score).
+
+> Replace `repo-link` with actual repository URLs when ready.
 
 ---
 
@@ -47,9 +60,10 @@ I build intelligent systems, scalable data workflows, and production-grade AI ap
 
 ---
 
-## 📫 Connect With Me  
-**Email:** manish.vangara07@gmail.com  
-**GitHub:** https://github.com/ManishVangara
+## 📫 Let's Connect
 
----
+**Email:** manish.vangara16@gmail.com
 
+**LinkedIn:** [linkedin.com/in/manishvangara](https://linkedin.com/in/manishvangara)
+
+**Location:** Seattle, WA
