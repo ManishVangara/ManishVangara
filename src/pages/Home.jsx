@@ -17,10 +17,10 @@ export const Home = () => {
             <Hero />
             <BentoGrid quote={profile.quotes.home_hero} />
             <ProjectShowcase quote={profile.quotes.home_projects} />
-            <Skills quote={profile.quotes.home_skills} />
             <Experience quote={profile.quotes.home_experience} />
-            <LessonsLearned />
+            <Skills quote={profile.quotes.home_skills} />
             <Certifications />
+            <LessonsLearned />
             <Connect quote={profile.quotes.home_connect} />
             <div className="py-20 text-center px-6">
                 <p className="font-handwriting text-4xl md:text-5xl text-gray-500 dark:text-gray-400 max-w-4xl mx-auto leading-normal">

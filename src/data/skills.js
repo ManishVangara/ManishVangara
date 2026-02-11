@@ -68,4 +68,5 @@ export const skills = [
             { name: "BigQuery", description: "Serverless, highly scalable data warehouse by Google.", stat: "Big Data" }
         ]
     }
+
 ];
