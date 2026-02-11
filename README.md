@@ -44,8 +44,6 @@ RFM analysis and K-means clustering on 100K+ customers to segment by purchasing 
 🔹 **[Spotify Music Data Mining & Recommendation Engine](repo-link)**
 Data mining on 170K+ Spotify tracks. K-means clustering into 6 genre categories (78% accuracy) and content-based recommendation engine using cosine similarity (0.82 correlation score).
 
-> Replace `repo-link` with actual repository URLs when ready.
-
 ---
 
 ## 📈 GitHub Stats
