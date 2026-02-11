@@ -14,7 +14,7 @@ export const BlogPost = () => {
 
     if (!blog) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
+            <div className="min-h-screen flex items-center justify-center bg-[#F3F0E6] dark:bg-black">
                 <div className="text-center">
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Post not found</h2>
                     <Link to="/blogs" className="text-blue-600 hover:text-blue-500 font-medium flex items-center gap-2 justify-center">
@@ -26,7 +26,7 @@ export const BlogPost = () => {
     }
 
     return (
-        <article className="min-h-screen bg-white dark:bg-black pt-32 pb-24">
+        <article className="min-h-screen bg-[#F3F0E6] dark:bg-black pt-32 pb-24">
 
             {/* Reading Progress Bar (Optional enhancement could go here) */}
 

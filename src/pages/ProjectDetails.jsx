@@ -17,7 +17,7 @@ export const ProjectDetails = () => {
     }
 
     return (
-        <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+        <div className="min-h-screen bg-[#F3F0E6] dark:bg-black transition-colors duration-300">
             {/* Header / Navigation */}
             <div className="fixed top-20 left-0 w-full z-10 px-6 pointer-events-none">
                 <div className="max-w-7xl mx-auto pointer-events-auto">
