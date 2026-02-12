@@ -214,7 +214,7 @@ const StaggerItem = ({ children, delay = 0 }) => {
 };
 
 export const Hero = () => {
-    const roles = profile.hero?.roles || ['Data Engineer', 'ML Systems Architect', 'Problem Solver'];
+    const roles = profile.hero?.roles || ['Data Analyst', 'Data Engineer', 'Data Scientist'];
     const mouseX = useRef(0);
     const mouseY = useRef(0);
 
