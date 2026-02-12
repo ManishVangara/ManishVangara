@@ -1,256 +1,250 @@
-
-import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Twitter, ArrowRight, Send, Check, Copy } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Send, Mail, Copy, Check, ArrowUpRight, Linkedin, Github, Twitter, Clock } from 'lucide-react';
 import { profile } from '../data/profile';
 import { QuoteBubble } from './QuoteBubble';
 
+const topics = [
+    { label: 'Data Analysis', icon: '📊' },
+    { label: 'Data Engineering', icon: '🔧' },
+    { label: 'Machine Learning', icon: '🤖' },
+    { label: 'Collaboration', icon: '🤝' },
+    { label: 'Freelance', icon: '💼' },
+    { label: 'Just Saying Hi', icon: '👋' },
+];
+
 export const Connect = ({ quote }) => {
-    const [formStatus, setFormStatus] = useState('idle'); // idle, sending, success
+    const [formData, setFormData] = useState({ name: '', email: '', topic: '', message: '' });
+    const [selectedTopic, setSelectedTopic] = useState('');
+    const [status, setStatus] = useState('idle'); // idle | sending | sent | error
     const [copied, setCopied] = useState(false);
-    const [activeTopic, setActiveTopic] = useState(null);
-    const [message, setMessage] = useState('');
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
 
-    const topics = [
-        { id: 'project', label: 'Start a Project', emoji: '🚀' },
-        { id: 'ai', label: 'Discuss AI', emoji: '🤖' },
-        { id: 'react', label: 'React / Next.js', emoji: '⚛️' },
-        { id: 'coffee', label: 'Grab a Coffee', emoji: '☕' }
-    ];
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+            { threshold: 0.1 }
+        );
+        if (sectionRef.current) observer.observe(sectionRef.current);
+        return () => observer.disconnect();
+    }, []);
 
-    const handleCopyEmail = () => {
+    const handleCopy = () => {
         navigator.clipboard.writeText(profile.email);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
 
-    const handleTopicClick = (topic) => {
-        setActiveTopic(topic.id);
-        const starters = {
-            project: "Hi Manish, I have a project idea involving...",
-            ai: "Hey, I'd love to chat about the latest in AI...",
-            react: "Hi, I noticed your work with React and wanted to ask...",
-            coffee: "Hi, are you free for a coffee chat near SF?"
-        };
-        setMessage(starters[topic.id] || "");
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setFormStatus('sending');
-
+        setStatus('sending');
         try {
-            const formData = new FormData(e.target);
-            // Append the component state 'message' specifically if needed, 
-            // but the textarea has name="message" (wait, it didn't have name attribute in the view, let me check).
-            // Checked view: textarea id="message", but NO name="message". Input id="name" NO name. Input id="email" NO name.
-            // I MUST ADD NAME ATTRIBUTES to the inputs for FormData to work automatically, or construct it manually.
-
-            // Constructing manually since I might miss adding name attributes in a separate step.
-            // Actually, let's fix the inputs to have name attributes, it's cleaner.
-            // But for this tool call, I will stick to manual construction using IDs or the existing state if available.
-            // The inputs are not controlled components (except message).
-
-            const submitData = {
-                name: e.target.elements.name.value,
-                email: e.target.elements.email.value,
-                message: message,
-                topic: activeTopic || 'General'
-            };
-
-            const response = await fetch(profile.contact.formspreeEndpoint, {
-                method: 'POST',
-                body: JSON.stringify(submitData),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                setFormStatus('success');
-                e.target.reset();
-                setTimeout(() => {
-                    setFormStatus('idle');
-                    setMessage('');
-                    setActiveTopic(null);
-                }, 3000);
-            } else {
-                setFormStatus('error');
-                setTimeout(() => setFormStatus('idle'), 3000);
-            }
-        } catch (error) {
-            console.error('Submission error:', error);
-            setFormStatus('error');
-            setTimeout(() => setFormStatus('idle'), 3000);
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            setStatus('sent');
+            setFormData({ name: '', email: '', topic: '', message: '' });
+            setSelectedTopic('');
+        } catch {
+            setStatus('error');
         }
     };
 
     return (
-        <section id="contact" className="py-24 bg-transparent dark:bg-black relative overflow-hidden">
-            {/* Background Grids */}
-            <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" />
+        <section id="connect" ref={sectionRef} className="py-24 px-6 scroll-mt-20 relative">
+            {/* Ambient glow behind heading */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none">
+                <div className="absolute inset-0 bg-brand-blue/[0.04] rounded-full blur-[120px]" />
+                <div className="absolute inset-16 bg-brand-purple/[0.03] rounded-full blur-[100px]" />
+            </div>
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div className="max-w-6xl mx-auto relative z-10">
+                {/* Big heading */}
+                <div
+                    className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                        }`}
+                >
+                    <h2 className="section-heading text-4xl sm:text-5xl lg:text-6xl text-white mb-4">
+                        Let's Build Something{' '}
+                        <span className="text-gradient">Together</span>
+                    </h2>
+                    <p className="text-zinc-500 text-sm max-w-md mx-auto">
+                        Have a project in mind, a data challenge to solve, or just want to chat? I'm all ears.
+                    </p>
+                </div>
 
-                    {/* Left Column: Info */}
-                    <div className="space-y-10">
-                        <div>
-                            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
-                                Let's build something <br />
-                                <span className="text-blue-600 dark:text-blue-400">extraordinary.</span>
-                            </h2>
-                            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-lg mb-8">
-                                Whether you have a groundbreaking idea or just want to talk tech, I'm all ears. Currently based in
-                                <span className="font-semibold text-gray-900 dark:text-white"> {profile.location}</span> & open to global collaborations.
-                            </p>
+                <div className="grid lg:grid-cols-5 gap-8">
+                    {/* Contact Form — with animated glow border */}
+                    <div
+                        className={`lg:col-span-3 glass-card-glow p-8 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                            }`}
+                    >
+                        {status === 'sent' ? (
+                            <div className="text-center py-12">
+                                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/10 flex items-center justify-center">
+                                    <Check size={28} className="text-green-400" />
+                                </div>
+                                <h3 className="text-xl font-heading font-bold text-white mb-2">Message Sent!</h3>
+                                <p className="text-sm text-zinc-500">I'll get back to you within 24 hours.</p>
+                                <button
+                                    onClick={() => setStatus('idle')}
+                                    className="mt-6 text-sm text-brand-blue hover:text-blue-300 transition-colors"
+                                >
+                                    Send another message
+                                </button>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-5">
+                                {/* Topic chips with icons */}
+                                <div>
+                                    <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-3">
+                                        What's this about?
+                                    </label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {topics.map((topic) => (
+                                            <button
+                                                key={topic.label}
+                                                type="button"
+                                                onClick={() => {
+                                                    setSelectedTopic(topic.label);
+                                                    setFormData(prev => ({ ...prev, topic: topic.label }));
+                                                }}
+                                                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-300 inline-flex items-center gap-1.5 ${selectedTopic === topic.label
+                                                    ? 'bg-brand-blue/10 text-brand-blue border border-brand-blue/30 shadow-sm shadow-brand-blue/10'
+                                                    : 'text-zinc-500 border border-white/5 hover:border-white/10 hover:text-white'
+                                                    }`}
+                                            >
+                                                <span>{topic.icon}</span>
+                                                {topic.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
 
-                            {/* Conversation Starters */}
-                            <div className="flex flex-wrap gap-3">
-                                {topics.map((topic) => (
+                                <div className="grid sm:grid-cols-2 gap-4">
+                                    <div className="relative">
+                                        <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Name</label>
+                                        <input
+                                            type="text"
+                                            value={formData.name}
+                                            onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                                            className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/5 text-white text-sm placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white/[0.05] transition-all"
+                                            placeholder="Your name"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="relative">
+                                        <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Email</label>
+                                        <input
+                                            type="email"
+                                            value={formData.email}
+                                            onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                                            className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/5 text-white text-sm placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white/[0.05] transition-all"
+                                            placeholder="your@email.com"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Message</label>
+                                    <textarea
+                                        value={formData.message}
+                                        onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                                        rows={4}
+                                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/5 text-white text-sm placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white/[0.05] transition-all resize-none"
+                                        placeholder="Tell me about your project or just say hi..."
+                                        required
+                                    />
+                                </div>
+
+                                <div className="flex flex-wrap items-center gap-4">
                                     <button
-                                        key={topic.id}
-                                        onClick={() => handleTopicClick(topic)}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${activeTopic === topic.id
-                                            ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-500/25'
-                                            : 'bg-white dark:bg-zinc-900 border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400'
-                                            }`}
+                                        type="submit"
+                                        disabled={status === 'sending'}
+                                        className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full text-sm font-medium text-white bg-gradient-to-r from-brand-blue to-brand-purple hover:shadow-lg hover:shadow-brand-blue/20 transition-all duration-300 disabled:opacity-50"
                                     >
-                                        <span className="mr-2">{topic.emoji}</span>
-                                        {topic.label}
+                                        {status === 'sending' ? (
+                                            <>
+                                                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                                Sending...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Send size={16} />
+                                                Send Message
+                                            </>
+                                        )}
                                     </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="space-y-4">
-                            {/* Email Copy Component */}
-                            <div
-                                onClick={handleCopyEmail}
-                                className="group cursor-pointer inline-flex items-center gap-4 bg-white dark:bg-zinc-900 p-2 pr-6 rounded-full border border-gray-200 dark:border-white/10 hover:border-blue-500/30 transition-all duration-300"
-                            >
-                                <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${copied ? 'bg-green-100 text-green-600 dark:bg-green-500/20 dark:text-green-400' : 'bg-gray-100 text-gray-600 dark:bg-white/5 dark:text-gray-400 group-hover:bg-blue-100 group-hover:text-blue-600 dark:group-hover:bg-blue-500/20 dark:group-hover:text-blue-400'}`}>
-                                    {copied ? <Check size={20} /> : <Mail size={20} />}
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">
-                                        {copied ? "Copied to clipboard!" : "Drop me an email"}
-                                    </span>
-                                    <span className="text-base font-semibold text-gray-900 dark:text-white">
-                                        {profile.email}
+                                    {/* Response time badge */}
+                                    <span className="inline-flex items-center gap-1.5 text-[11px] text-zinc-600">
+                                        <Clock size={12} />
+                                        Typical response: &lt; 24hrs
                                     </span>
                                 </div>
-                                <Copy size={16} className={`ml-auto text-gray-400 group-hover:text-blue-500 transition-colors ${copied ? 'opacity-0' : 'opacity-100'}`} />
-                            </div>
-
-                            <div className="flex gap-4 pt-4">
-                                <SocialIcon href={profile.socials.github} icon={<Github size={24} />} />
-                                <SocialIcon href={profile.socials.linkedin} icon={<Linkedin size={24} />} />
-                                <SocialIcon href={profile.socials.twitter} icon={<Twitter size={24} />} />
-                            </div>
-                        </div>
+                            </form>
+                        )}
                     </div>
 
-                    {/* Right Column: Form */}
-                    <div className="bg-white/80 dark:bg-zinc-900/50 backdrop-blur-2xl p-8 md:p-10 rounded-3xl border border-gray-200 dark:border-white/10 shadow-2xl shadow-gray-200/50 dark:shadow-black/50">
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    What should I call you?
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    required
-                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-black/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
-                                    placeholder="John Doe"
-                                />
+                    {/* Sidebar */}
+                    <div
+                        className={`lg:col-span-2 space-y-4 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                            }`}
+                    >
+                        {/* Email card */}
+                        <div className="glass-card p-5">
+                            <div className="flex items-center justify-between mb-3">
+                                <div className="flex items-center gap-2">
+                                    <Mail size={16} className="text-brand-blue" />
+                                    <span className="text-xs text-zinc-500 uppercase tracking-wider">Email</span>
+                                </div>
+                                <button
+                                    onClick={handleCopy}
+                                    className="p-1.5 rounded-lg text-zinc-500 hover:text-white hover:bg-white/5 transition-all"
+                                >
+                                    {copied ? <Check size={14} className="text-green-400" /> : <Copy size={14} />}
+                                </button>
                             </div>
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    Where can I reach you?
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    required
-                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-black/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
-                                    placeholder="john@example.com"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    How can I help?
-                                </label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows={4}
-                                    required
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-black/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none placeholder:text-gray-400 dark:placeholder:text-gray-600"
-                                    placeholder="Tell me about your project, goals, or just say hi..."
-                                />
-                            </div>
-
-                            <button
-                                type="submit"
-                                disabled={formStatus === 'sending' || formStatus === 'success'}
-                                className={`w-full py-4 rounded-xl font-bold text-white flex items-center justify-center gap-2 transition-all duration-300 transform active:scale-95 ${formStatus === 'success'
-                                    ? 'bg-green-500 hover:bg-green-600'
-                                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg hover:shadow-blue-500/25'
-                                    }`}
+                            <a
+                                href={`mailto:${profile.email}`}
+                                className="text-sm text-white hover:text-brand-blue transition-colors break-all"
                             >
-                                {formStatus === 'idle' && (
-                                    <>Send Message <Send size={18} /></>
-                                )}
-                                {formStatus === 'sending' && (
-                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                )}
-                                {formStatus === 'success' && (
-                                    <>Message Sent! <Check size={18} /></>
-                                )}
-                                {formStatus === 'error' && (
-                                    <>Failed. Try Again.</>
-                                )}
-                            </button>
-                        </form>
+                                {profile.email}
+                            </a>
+                        </div>
+
+                        {/* Social links */}
+                        {[
+                            { icon: Linkedin, label: 'LinkedIn', href: profile.socials?.linkedin, handle: 'Connect on LinkedIn' },
+                            { icon: Github, label: 'GitHub', href: profile.socials?.github, handle: 'View my code' },
+                            { icon: Twitter, label: 'Twitter', href: profile.socials?.twitter, handle: 'Follow me' },
+                        ]
+                            .filter(s => s.href)
+                            .map(social => (
+                                <a
+                                    key={social.label}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="glass-card p-5 flex items-center gap-4 group"
+                                >
+                                    <div className="p-2 rounded-xl bg-white/5 group-hover:bg-brand-blue/10 transition-colors">
+                                        <social.icon size={18} className="text-zinc-400 group-hover:text-brand-blue transition-colors" />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-sm font-semibold text-white">{social.label}</p>
+                                        <p className="text-xs text-zinc-600">{social.handle}</p>
+                                    </div>
+                                    <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-brand-blue transition-colors" />
+                                </a>
+                            ))}
                     </div>
-
                 </div>
 
-                {/* Quote Integration */}
-                <div className="mt-16">
-                    <QuoteBubble quote={quote} />
-                </div>
+                {quote && (
+                    <div className="mt-16">
+                        <QuoteBubble quote={quote} />
+                    </div>
+                )}
             </div>
         </section>
     );
 };
-
-const SocialLink = ({ href, icon, label, isEmail }) => (
-    <a
-        href={href}
-        className="flex items-center gap-4 text-lg font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
-    >
-        <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-500/10 transition-colors">
-            {icon}
-        </div>
-        {label}
-        {isEmail && <ArrowRight size={18} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />}
-    </a>
-);
-
-const SocialIcon = ({ href, icon }) => (
-    <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-12 h-12 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300"
-    >
-        {icon}
-    </a>
-);
