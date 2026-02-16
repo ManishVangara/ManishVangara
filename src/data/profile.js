@@ -36,7 +36,7 @@ export const profile = {
     },
 
     // Resume
-    resume: "/resume.pdf",
+    resume: "/ManishVangara/resume.pdf",
 
     // Hero Section
     hero: {
