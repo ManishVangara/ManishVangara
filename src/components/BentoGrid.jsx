@@ -145,7 +145,7 @@ export const BentoGrid = ({ quote }) => {
                             <Globe className="w-full h-full" />
                         </Suspense>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-black dark:via-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-50 via-transparent to-transparent dark:from-black dark:via-transparent" />
 
                     {/* Blinking Dot Map Placeholder (CSS Pattern) */}
                     <div className="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none" style={{
@@ -179,13 +179,13 @@ export const BentoGrid = ({ quote }) => {
                 </Card>
 
                 {/* 2. Curious About -> The Learning Stack */}
-                <Card className="md:col-span-1 bg-zinc-50 dark:bg-zinc-900/50">
+                <Card className="md:col-span-1 bg-white dark:bg-zinc-900/50">
                     <div className="h-full flex flex-col justify-between">
                         <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 rounded-full bg-red-500" />
                             <div className="w-2 h-2 rounded-full bg-yellow-500" />
                             <div className="w-2 h-2 rounded-full bg-green-500" />
-                            <span className="ml-2 text-xs font-mono text-gray-400">curiously_learning_about.sh</span>
+                            <span className="ml-2 text-xs font-mono text-gray-500 dark:text-gray-400">curiously_learning_about.sh</span>
                         </div>
 
                         <div className="space-y-2 font-mono text-xs">
@@ -266,7 +266,7 @@ export const BentoGrid = ({ quote }) => {
                 </Card>
 
                 {/* 6. Lessons Learned - Wide */}
-                <Card className="md:col-span-2 bg-gray-50 dark:bg-white/5 border-dashed">
+                <Card className="md:col-span-2 bg-white dark:bg-white/5 border-dashed">
                     <div className="h-full flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                         <div className="flex gap-4 items-center">
                             <div className="bg-blue-100 dark:bg-blue-900/30 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">

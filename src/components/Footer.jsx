@@ -33,7 +33,7 @@ export const Footer = () => {
 
     return (
         <>
-            <footer className="relative">
+            <footer className="relative bg-[#F3F0E6] dark:bg-black transition-colors duration-300">
                 {/* Gradient top border */}
                 <div className="h-px bg-gradient-to-r from-transparent via-brand-blue/30 to-transparent" />
 
@@ -41,10 +41,10 @@ export const Footer = () => {
                     <div className="grid sm:grid-cols-3 gap-8 mb-10">
                         {/* Brand */}
                         <div>
-                            <Link to="/" className="inline-block text-xl font-heading font-bold text-white mb-3">
+                            <Link to="/" className="inline-block text-xl font-heading font-bold text-gray-900 dark:text-white mb-3">
                                 {profile.name.split(' ')[0]}<span className="text-brand-blue">.</span>
                             </Link>
-                            <p className="text-xs text-zinc-600 leading-relaxed max-w-[200px]">
+                            <p className="text-xs text-zinc-600 dark:text-zinc-600 leading-relaxed max-w-[200px]">
                                 Data Engineer & ML Systems Architect based in Seattle, WA.
                             </p>
                         </div>
@@ -57,7 +57,7 @@ export const Footer = () => {
                                     <Link
                                         key={link.to}
                                         to={link.to}
-                                        className="block text-sm text-zinc-500 hover:text-white transition-colors"
+                                        className="block text-sm text-zinc-600 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                                     >
                                         {link.label}
                                     </Link>
@@ -75,7 +75,7 @@ export const Footer = () => {
                                         href={social.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-2 rounded-lg text-zinc-600 hover:text-white hover:bg-white/5 transition-all"
+                                        className="p-2 rounded-lg text-zinc-600 dark:text-zinc-600 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-all"
                                     >
                                         <social.icon size={18} />
                                     </a>
@@ -95,11 +95,11 @@ export const Footer = () => {
                     </div>
 
                     {/* Bottom */}
-                    <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <p className="text-xs text-zinc-700">
+                    <div className="pt-8 border-t border-zinc-200 dark:border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p className="text-xs text-zinc-600 dark:text-zinc-700">
                             © {year} {profile.name}. All rights reserved.
                         </p>
-                        <p className="text-xs text-zinc-700 inline-flex items-center gap-1">
+                        <p className="text-xs text-zinc-600 dark:text-zinc-700 inline-flex items-center gap-1">
                             Built with <Heart size={10} className="text-red-400" style={{ animation: 'pulseGlow 2s ease-in-out infinite' }} /> React + Tailwind CSS
                         </p>
                     </div>
@@ -109,7 +109,7 @@ export const Footer = () => {
             {/* Back to top button */}
             <button
                 onClick={scrollToTop}
-                className={`fixed bottom-6 right-6 z-40 p-3 rounded-full glass-nav shadow-lg shadow-black/20 text-zinc-400 hover:text-white transition-all duration-300 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                className={`fixed bottom-6 right-6 z-40 p-3 rounded-full glass-nav shadow-lg shadow-black/10 dark:shadow-black/20 text-zinc-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
                     }`}
                 aria-label="Back to top"
             >

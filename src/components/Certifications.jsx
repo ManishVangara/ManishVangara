@@ -11,7 +11,7 @@ export const Certifications = () => {
     const displayedCerts = showAll ? safeCertData : safeCertData.slice(0, 3);
 
     return (
-        <section id="certifications" className="py-24 bg-gray-50 dark:bg-zinc-900/50 relative overflow-hidden transition-colors duration-300">
+        <section id="certifications" className="py-24 bg-[#F3F0E6] dark:bg-zinc-900/50 relative overflow-hidden transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 font-serif">

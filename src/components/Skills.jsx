@@ -37,10 +37,10 @@ export const Skills = ({ quote }) => {
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="mb-12">
-                    <h2 className="section-heading text-4xl sm:text-5xl text-white mb-3">
+                    <h2 className="section-heading text-4xl sm:text-5xl text-gray-900 dark:text-white mb-3">
                         Technical <span className="text-gradient">Expertise</span>
                     </h2>
-                    <p className="text-zinc-500 text-sm max-w-md">
+                    <p className="text-zinc-600 dark:text-zinc-500 text-sm max-w-md">
                         Technologies and methodologies I use to turn data into decisions.
                     </p>
                 </div>
@@ -52,8 +52,8 @@ export const Skills = ({ quote }) => {
                             key={cat.category}
                             onClick={() => setActiveCategory(i)}
                             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === i
-                                    ? 'glass-button bg-brand-blue/10 text-brand-blue border-brand-blue/30'
-                                    : 'text-zinc-500 hover:text-white hover:bg-white/5 border border-transparent'
+                                ? 'glass-button bg-brand-blue/10 text-brand-blue border-brand-blue/30'
+                                : 'text-zinc-600 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 border border-transparent'
                                 }`}
                         >
                             {cat.category}
@@ -73,7 +73,7 @@ export const Skills = ({ quote }) => {
                             <div className="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">
                                 {getSkillIcon(skill.name)}
                             </div>
-                            <h3 className="text-sm font-semibold text-white mb-1 group-hover:text-brand-blue transition-colors">
+                            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-brand-blue transition-colors">
                                 {skill.name}
                             </h3>
                             <p className="text-[10px] text-zinc-600 uppercase tracking-wider">{skill.stat}</p>
