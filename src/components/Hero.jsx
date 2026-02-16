@@ -230,7 +230,7 @@ export const Hero = () => {
             onMouseMove={handleMouseMove}
         >
             {/* Radial glow behind orb — enlarged and multi-color */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none">
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none opacity-50 dark:opacity-100">
                 <div className="absolute inset-0 bg-brand-blue/5 rounded-full blur-[150px]" />
                 <div className="absolute inset-12 bg-brand-purple/4 rounded-full blur-[120px]" />
             </div>
@@ -247,7 +247,7 @@ export const Hero = () => {
                         </StaggerItem>
 
                         <StaggerItem delay={400}>
-                            <h1 className="section-heading text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[0.95]">
+                            <h1 className="section-heading text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-gray-900 dark:text-white leading-[0.95]">
                                 {profile.name.split(' ')[0]}
                                 <br />
                                 <span className="text-gradient">{profile.name.split(' ').slice(1).join(' ')}</span>
@@ -255,7 +255,7 @@ export const Hero = () => {
                         </StaggerItem>
 
                         <StaggerItem delay={600}>
-                            <p className="text-xl sm:text-2xl text-zinc-400 font-light max-w-lg leading-relaxed">
+                            <p className="text-xl sm:text-2xl text-zinc-600 dark:text-zinc-400 font-light max-w-lg leading-relaxed">
                                 <TextLoop texts={roles} interval={3000} />
                             </p>
                         </StaggerItem>
@@ -263,7 +263,7 @@ export const Hero = () => {
                         <StaggerItem delay={750}>
                             <div className="flex items-center gap-2">
                                 <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                                 </span>
                                 <div className="flex items-center gap-1.5 text-xs text-zinc-500">
@@ -274,7 +274,7 @@ export const Hero = () => {
                         </StaggerItem>
 
                         <StaggerItem delay={900}>
-                            <p className="text-base text-zinc-500 max-w-md leading-relaxed">
+                            <p className="text-base text-zinc-600 dark:text-zinc-500 max-w-md leading-relaxed">
                                 {profile.hero?.tagline || 'Building data pipelines and ML systems that turn complex data into actionable intelligence.'}
                             </p>
                         </StaggerItem>
@@ -283,7 +283,7 @@ export const Hero = () => {
                             <div className="flex flex-wrap gap-3 pt-2">
                                 <a
                                     href="#projects"
-                                    className="glass-button inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-white group"
+                                    className="glass-button inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-gray-900 dark:text-white group"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
@@ -297,7 +297,7 @@ export const Hero = () => {
                                         href={profile.resume}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-zinc-400 border border-white/10 hover:border-white/20 hover:text-white transition-all duration-300"
+                                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-white/10 hover:border-zinc-400 dark:hover:border-white/20 hover:text-gray-900 dark:hover:text-white transition-all duration-300"
                                     >
                                         <Download size={16} />
                                         Download CV
@@ -309,22 +309,22 @@ export const Hero = () => {
                         <StaggerItem delay={1300}>
                             <div className="flex items-center gap-4 pt-4">
                                 <span className="text-xs text-zinc-600 uppercase tracking-wider">Find me on</span>
-                                <div className="h-px flex-1 bg-white/5 max-w-[60px]" />
+                                <div className="h-px flex-1 bg-zinc-200 dark:bg-white/5 max-w-[60px]" />
                                 {profile.socials?.github && (
                                     <a href={profile.socials.github} target="_blank" rel="noopener noreferrer"
-                                        className="text-zinc-500 hover:text-white transition-colors duration-300">
+                                        className="text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
                                         <Github size={18} />
                                     </a>
                                 )}
                                 {profile.socials?.linkedin && (
                                     <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer"
-                                        className="text-zinc-500 hover:text-white transition-colors duration-300">
+                                        className="text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
                                         <Linkedin size={18} />
                                     </a>
                                 )}
                                 {profile.email && (
                                     <a href={`mailto:${profile.email}`}
-                                        className="text-zinc-500 hover:text-white transition-colors duration-300">
+                                        className="text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
                                         <Mail size={18} />
                                     </a>
                                 )}
@@ -344,11 +344,11 @@ export const Hero = () => {
 
             {/* Scroll indicator — improved with mouse icon */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 group">
-                <span className="text-[10px] text-zinc-600 tracking-wider uppercase group-hover:text-zinc-400 transition-colors">
+                <span className="text-[10px] text-zinc-600 tracking-wider uppercase group-hover:text-zinc-900 dark:group-hover:text-zinc-400 transition-colors">
                     Scroll to explore
                 </span>
-                <div className="w-5 h-8 rounded-full border border-zinc-700 flex justify-center pt-1.5 group-hover:border-zinc-500 transition-colors">
-                    <div className="w-0.5 h-2 bg-zinc-500 rounded-full animate-bounce" />
+                <div className="w-5 h-8 rounded-full border border-zinc-400 dark:border-zinc-700 flex justify-center pt-1.5 group-hover:border-zinc-600 dark:group-hover:border-zinc-500 transition-colors">
+                    <div className="w-0.5 h-2 bg-zinc-600 dark:bg-zinc-500 rounded-full animate-bounce" />
                 </div>
             </div>
         </section>

@@ -62,11 +62,11 @@ export const Connect = ({ quote }) => {
                     className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`}
                 >
-                    <h2 className="section-heading text-4xl sm:text-5xl lg:text-6xl text-white mb-4">
+                    <h2 className="section-heading text-4xl sm:text-5xl lg:text-6xl text-gray-900 dark:text-white mb-4">
                         Let's Build Something{' '}
                         <span className="text-gradient">Together</span>
                     </h2>
-                    <p className="text-zinc-500 text-sm max-w-md mx-auto">
+                    <p className="text-zinc-600 dark:text-zinc-500 text-sm max-w-md mx-auto">
                         Have a project in mind, a data challenge to solve, or just want to chat? I'm all ears.
                     </p>
                 </div>
@@ -82,7 +82,7 @@ export const Connect = ({ quote }) => {
                                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/10 flex items-center justify-center">
                                     <Check size={28} className="text-green-400" />
                                 </div>
-                                <h3 className="text-xl font-heading font-bold text-white mb-2">Message Sent!</h3>
+                                <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-white mb-2">Message Sent!</h3>
                                 <p className="text-sm text-zinc-500">I'll get back to you within 24 hours.</p>
                                 <button
                                     onClick={() => setStatus('idle')}
@@ -109,7 +109,7 @@ export const Connect = ({ quote }) => {
                                                 }}
                                                 className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-300 inline-flex items-center gap-1.5 ${selectedTopic === topic.label
                                                     ? 'bg-brand-blue/10 text-brand-blue border border-brand-blue/30 shadow-sm shadow-brand-blue/10'
-                                                    : 'text-zinc-500 border border-white/5 hover:border-white/10 hover:text-white'
+                                                    : 'text-zinc-600 dark:text-zinc-500 border border-zinc-200 dark:border-white/5 hover:border-zinc-400 dark:hover:border-white/10 hover:text-gray-900 dark:hover:text-white'
                                                     }`}
                                             >
                                                 <span>{topic.icon}</span>
@@ -126,7 +126,7 @@ export const Connect = ({ quote }) => {
                                             type="text"
                                             value={formData.name}
                                             onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                                            className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/5 text-white text-sm placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white/[0.05] transition-all"
+                                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/5 text-gray-900 dark:text-white text-sm placeholder:text-zinc-400 dark:placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white dark:focus:bg-white/[0.05] transition-all"
                                             placeholder="Your name"
                                             required
                                         />
@@ -137,7 +137,7 @@ export const Connect = ({ quote }) => {
                                             type="email"
                                             value={formData.email}
                                             onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                                            className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/5 text-white text-sm placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white/[0.05] transition-all"
+                                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/5 text-gray-900 dark:text-white text-sm placeholder:text-zinc-400 dark:placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white dark:focus:bg-white/[0.05] transition-all"
                                             placeholder="your@email.com"
                                             required
                                         />
@@ -150,7 +150,7 @@ export const Connect = ({ quote }) => {
                                         value={formData.message}
                                         onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                                         rows={4}
-                                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/5 text-white text-sm placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white/[0.05] transition-all resize-none"
+                                        className="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/5 text-gray-900 dark:text-white text-sm placeholder:text-zinc-400 dark:placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white dark:focus:bg-white/[0.05] transition-all resize-none"
                                         placeholder="Tell me about your project or just say hi..."
                                         required
                                     />
@@ -198,14 +198,14 @@ export const Connect = ({ quote }) => {
                                 </div>
                                 <button
                                     onClick={handleCopy}
-                                    className="p-1.5 rounded-lg text-zinc-500 hover:text-white hover:bg-white/5 transition-all"
+                                    className="p-1.5 rounded-lg text-zinc-500 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-all"
                                 >
                                     {copied ? <Check size={14} className="text-green-400" /> : <Copy size={14} />}
                                 </button>
                             </div>
                             <a
                                 href={`mailto:${profile.email}`}
-                                className="text-sm text-white hover:text-brand-blue transition-colors break-all"
+                                className="text-sm text-gray-900 dark:text-white hover:text-brand-blue transition-colors break-all"
                             >
                                 {profile.email}
                             </a>
@@ -226,11 +226,11 @@ export const Connect = ({ quote }) => {
                                     rel="noopener noreferrer"
                                     className="glass-card p-5 flex items-center gap-4 group"
                                 >
-                                    <div className="p-2 rounded-xl bg-white/5 group-hover:bg-brand-blue/10 transition-colors">
-                                        <social.icon size={18} className="text-zinc-400 group-hover:text-brand-blue transition-colors" />
+                                    <div className="p-2 rounded-xl bg-black/5 dark:bg-white/5 group-hover:bg-brand-blue/10 transition-colors">
+                                        <social.icon size={18} className="text-zinc-500 dark:text-zinc-400 group-hover:text-brand-blue transition-colors" />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-sm font-semibold text-white">{social.label}</p>
+                                        <p className="text-sm font-semibold text-gray-900 dark:text-white">{social.label}</p>
                                         <p className="text-xs text-zinc-600">{social.handle}</p>
                                     </div>
                                     <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-brand-blue transition-colors" />

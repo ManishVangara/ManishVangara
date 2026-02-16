@@ -70,18 +70,18 @@ export const Navbar = () => {
         <>
             {/* Desktop Navbar */}
             <nav className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'top-3' : 'top-5'}`}>
-                <div className="hidden md:flex items-center gap-1 glass-nav rounded-full px-2 py-1.5 shadow-lg shadow-black/20">
+                <div className="hidden md:flex items-center gap-1 glass-nav rounded-full px-2 py-1.5 shadow-lg shadow-black/5 dark:shadow-black/20">
 
                     {/* Available for work badge */}
                     <div className="flex items-center gap-1.5 px-3 py-1.5 mr-1">
                         <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
-                        <span className="text-xs font-medium text-zinc-400">Available</span>
+                        <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">Available</span>
                     </div>
 
-                    <div className="w-px h-4 bg-white/10 mx-1"></div>
+                    <div className="w-px h-4 bg-zinc-200 dark:bg-white/10 mx-1"></div>
 
                     {navItems.map((item) => (
                         <Link
@@ -94,8 +94,8 @@ export const Navbar = () => {
                                 }
                             }}
                             className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${isActive(item.path)
-                                    ? 'bg-white/10 text-white'
-                                    : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                                ? 'bg-black/5 dark:bg-white/10 text-gray-900 dark:text-white'
+                                : 'text-zinc-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
                                 }`}
                         >
                             {item.label}
@@ -106,14 +106,16 @@ export const Navbar = () => {
                     <div ref={moreRef} className="relative">
                         <button
                             onClick={() => setIsMoreOpen(!isMoreOpen)}
-                            className={`flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${isMoreOpen ? 'bg-white/10 text-white' : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                            className={`flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${isMoreOpen
+                                ? 'bg-black/5 dark:bg-white/10 text-gray-900 dark:text-white'
+                                : 'text-zinc-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
                                 }`}
                         >
                             More
                             <ChevronDown size={14} className={`transition-transform duration-300 ${isMoreOpen ? 'rotate-180' : ''}`} />
                         </button>
                         {isMoreOpen && (
-                            <div className="absolute top-full right-0 mt-2 glass-nav rounded-xl py-1 min-w-[160px] shadow-xl shadow-black/30">
+                            <div className="absolute top-full right-0 mt-2 glass-nav rounded-xl py-1 min-w-[160px] shadow-xl shadow-black/10 dark:shadow-black/30">
                                 {moreItems.map((item) => (
                                     <Link
                                         key={item.path}
@@ -122,7 +124,7 @@ export const Navbar = () => {
                                             e.preventDefault();
                                             handleNavClick(item.path);
                                         }}
-                                        className="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+                                        className="block px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                                     >
                                         {item.label}
                                     </Link>
@@ -131,12 +133,12 @@ export const Navbar = () => {
                         )}
                     </div>
 
-                    <div className="w-px h-4 bg-white/10 mx-1"></div>
+                    <div className="w-px h-4 bg-zinc-200 dark:bg-white/10 mx-1"></div>
 
                     {/* Theme toggle */}
                     <button
                         onClick={toggleTheme}
-                        className="p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 transition-all duration-300"
+                        className="p-2 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-300"
                         aria-label="Toggle theme"
                     >
                         {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
@@ -148,21 +150,21 @@ export const Navbar = () => {
             <nav className="md:hidden fixed top-0 left-0 right-0 z-50">
                 <div className={`flex items-center justify-between px-4 py-3 transition-all duration-300 ${scrolled ? 'glass-nav' : 'bg-transparent'
                     }`}>
-                    <Link to="/" className="text-lg font-heading font-bold text-white">
+                    <Link to="/" className="text-lg font-heading font-bold text-gray-900 dark:text-white">
                         MV<span className="text-brand-blue">.</span>
                     </Link>
 
                     <div className="flex items-center gap-2">
                         <button
                             onClick={toggleTheme}
-                            className="p-2 rounded-full text-zinc-400 hover:text-white transition-colors"
+                            className="p-2 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                             aria-label="Toggle theme"
                         >
                             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
                         </button>
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="p-2 rounded-full text-zinc-400 hover:text-white transition-colors"
+                            className="p-2 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                             aria-label="Toggle menu"
                         >
                             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -172,15 +174,15 @@ export const Navbar = () => {
 
                 {/* Mobile menu overlay */}
                 {isMenuOpen && (
-                    <div className="fixed inset-0 top-[56px] bg-brand-bg/95 backdrop-blur-xl z-40">
+                    <div className="fixed inset-0 top-[56px] bg-[#F3F0E6]/95 dark:bg-black/95 backdrop-blur-xl z-40 transition-colors duration-300">
                         <div className="flex flex-col px-6 py-8 space-y-1">
                             {/* Available badge mobile */}
                             <div className="flex items-center gap-2 px-4 py-3 mb-4">
                                 <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                                 </span>
-                                <span className="text-sm text-green-400 font-medium">Available for work</span>
+                                <span className="text-sm text-green-600 dark:text-green-400 font-medium">Available for work</span>
                             </div>
 
                             {[...navItems, ...moreItems].map((item) => (
@@ -194,8 +196,8 @@ export const Navbar = () => {
                                         handleNavClick(item.path);
                                     }}
                                     className={`px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 ${isActive(item.path)
-                                            ? 'bg-white/10 text-white'
-                                            : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                                        ? 'bg-black/5 dark:bg-white/10 text-gray-900 dark:text-white'
+                                        : 'text-zinc-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
                                         }`}
                                 >
                                     {item.label}

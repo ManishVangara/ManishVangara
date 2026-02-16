@@ -68,7 +68,7 @@ const TimelineItem = ({ item, index, isLeft }) => {
 
             {/* Content Card */}
             <div className="w-full md:w-5/12">
-                <div className={`relative bg-gray-50 dark:bg-zinc-900 p-6 rounded-3xl border border-gray-200 dark:border-white/5 transition-all duration-300 hover:shadow-2xl hover:border-blue-500/30 group-hover:-translate-y-1 ${isLeft ? 'md:mr-auto' : 'md:ml-auto'}`}>
+                <div className={`relative bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-gray-200 dark:border-white/5 transition-all duration-300 hover:shadow-2xl hover:border-blue-500/30 group-hover:-translate-y-1 ${isLeft ? 'md:mr-auto' : 'md:ml-auto'}`}>
 
                     {/* Connecting Line for Mobile (optional) or just decoration */}
 
@@ -111,7 +111,7 @@ const TimelineItem = ({ item, index, isLeft }) => {
                             {item.skills?.map((skill, i) => (
                                 <span
                                     key={i}
-                                    className="px-2.5 py-1 text-xs rounded-md bg-white dark:bg-black/40 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 group-hover:border-blue-500/20 transition-colors"
+                                    className="px-2.5 py-1 text-xs rounded-md bg-gray-100 dark:bg-black/40 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 group-hover:border-blue-500/20 transition-colors"
                                 >
                                     {skill}
                                 </span>
