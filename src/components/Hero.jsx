@@ -268,7 +268,7 @@ export const Hero = () => {
                                 </span>
                                 <div className="flex items-center gap-1.5 text-xs text-zinc-500">
                                     <MapPin size={12} />
-                                    <span>Seattle, WA — Open to opportunities</span>
+                                    <span>{profile.location} — Open to opportunities</span>
                                 </div>
                             </div>
                         </StaggerItem>

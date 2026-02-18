@@ -45,7 +45,7 @@ export const Footer = () => {
                                 {profile.name.split(' ')[0]}<span className="text-brand-blue">.</span>
                             </Link>
                             <p className="text-xs text-zinc-600 dark:text-zinc-600 leading-relaxed max-w-[200px]">
-                                Data Engineer & ML Systems Architect based in Seattle, WA.
+                                Data Engineer & ML Systems Architect based in {profile.location}.
                             </p>
                         </div>
 

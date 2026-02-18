@@ -64,4 +64,4 @@ Data mining on 170K+ Spotify tracks. K-means clustering into 6 genre categories 
 
 **LinkedIn:** [linkedin.com/in/manishvangara](https://linkedin.com/in/manishvangara)
 
-**Location:** Seattle, WA
+**Location:** Dallas, TX

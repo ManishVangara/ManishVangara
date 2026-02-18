@@ -20,7 +20,7 @@ export const profile = {
     firstName: "Manish",
     lastName: "Vangara",
     role: "Data Analyst",
-    location: "Seattle",
+    location: "Dallas, TX",
     email: "manish.vangara16@gmail.com",
     logoText: "MANISH",
 
