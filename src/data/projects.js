@@ -1,4 +1,4 @@
-import { default as aiCustomerSupportHtml } from './projects/ai-customer-support.html?raw';
+// import { default as paymentFraudHtml } from './projects/Payment_Transaction_Fraud_Detection.html?raw';
 
 export const allProjects = [
     {
@@ -7,10 +7,11 @@ export const allProjects = [
         category: "Financial Analytics",
         description: "Developed real-time fraud detection system analyzing 500K+ monthly payment transactions using anomaly detection algorithms (Isolation Forest, Z-score) and Tableau dashboards, reducing false positives by 35% while ensuring billing accuracy and compliance with financial controls.",
         tech: ["Python", "SQL", "Tableau", "Anomaly Detection"],
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop",
-        github: "#",
+        image: import.meta.env.BASE_URL + "projects/payment-fraud-detection.png",
+        github: "https://github.com/ManishVangara/Payment_Transaction_Fraud_Detection",
         live: "#",
-        notionId: "2a70b6c96b2280f89442e97c41208abc" // Placeholder
+        notionId: "2a70b6c96b2280f89442e97c41208abc", // Placeholder
+        projectUrl: import.meta.env.BASE_URL + "projects/Payment_Transaction_Fraud_Detection.html"
     },
     {
         id: 2,

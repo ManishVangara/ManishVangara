@@ -56,7 +56,16 @@ export const ProjectDetails = () => {
                     </div>
                 </div>
 
-                {project.htmlContent ? (
+                {project.projectUrl ? (
+                    <div className="w-full h-[800px] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-lg bg-white">
+                        <iframe
+                            src={project.projectUrl}
+                            title={project.title}
+                            className="w-full h-full"
+                            style={{ border: 'none' }}
+                        />
+                    </div>
+                ) : project.htmlContent ? (
                     <div
                         className="prose dark:prose-invert max-w-none prose-lg
                                    prose-headings:font-bold prose-headings:tracking-tight
