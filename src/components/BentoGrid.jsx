@@ -142,7 +142,7 @@ export const BentoGrid = ({ quote }) => {
                 <Card className="md:col-span-2 md:row-span-2 min-h-[300px] relative flex flex-col justify-between">
                     <div className="absolute inset-0 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity duration-500">
                         <Suspense fallback={<div className="w-full h-full bg-gray-100 dark:bg-zinc-800 animate-pulse" />}>
-                            <Globe className="w-full h-full" />
+                            <Globe className="w-full h-full" lat={profile.coordinates.lat} lng={profile.coordinates.lng} key={profile.location} />
                         </Suspense>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-50 via-transparent to-transparent dark:from-black dark:via-transparent" />
@@ -160,7 +160,7 @@ export const BentoGrid = ({ quote }) => {
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                             </span>
                             <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
-                                {time.toLocaleTimeString('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: '2-digit' })} PST
+                                {time.toLocaleTimeString('en-US', { timeZone: profile.timezone, hour: 'numeric', minute: '2-digit' })} {new Date().toLocaleTimeString('en-us', { timeZone: profile.timezone, timeZoneName: 'short' }).split(' ')[2]}
                             </span>
                         </div>
                     </div>

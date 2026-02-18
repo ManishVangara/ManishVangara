@@ -21,6 +21,8 @@ export const profile = {
     lastName: "Vangara",
     role: "Data Analyst",
     location: "Dallas, TX",
+    coordinates: { lat: 32.7767, lng: -96.7970 },
+    timezone: "America/Chicago",
     email: "manish.vangara16@gmail.com",
     logoText: "MANISH",
 
