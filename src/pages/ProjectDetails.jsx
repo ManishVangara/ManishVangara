@@ -31,7 +31,7 @@ export const ProjectDetails = () => {
             {/* Content Area */}
             <div className="pt-32 pb-20 px-4 md:px-0 max-w-4xl mx-auto">
                 <div className="mb-12">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
+                    <h1 className="section-heading text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
                         {project.title}
                     </h1>
                     <div className="flex gap-2 mb-6 flex-wrap">

@@ -38,7 +38,7 @@ export const Skills = ({ quote }) => {
                 {/* Header */}
                 <div className="mb-12">
                     <h2 className="section-heading text-4xl sm:text-5xl text-gray-900 dark:text-white mb-3">
-                        Technical <span className="text-gradient">Expertise</span>
+                        Technical <span className="text-blue-600 dark:text-blue-400">Expertise</span>
                     </h2>
                     <p className="text-zinc-600 dark:text-zinc-500 text-sm max-w-md">
                         Technologies and methodologies I use to turn data into decisions.
@@ -52,7 +52,7 @@ export const Skills = ({ quote }) => {
                             key={cat.category}
                             onClick={() => setActiveCategory(i)}
                             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === i
-                                ? 'glass-button bg-brand-blue/10 text-brand-blue border-brand-blue/30'
+                                ? 'glass-button bg-blue-600/10 text-blue-600 dark:text-blue-400 border-blue-600/30'
                                 : 'text-zinc-600 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 border border-transparent'
                                 }`}
                         >
@@ -73,7 +73,7 @@ export const Skills = ({ quote }) => {
                             <div className="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">
                                 {getSkillIcon(skill.name)}
                             </div>
-                            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-brand-blue transition-colors">
+                            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                                 {skill.name}
                             </h3>
                             <p className="text-[10px] text-zinc-600 uppercase tracking-wider">{skill.stat}</p>
@@ -83,8 +83,8 @@ export const Skills = ({ quote }) => {
 
                 {/* Marquee ticker */}
                 <div className="mt-12 overflow-hidden relative">
-                    <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-brand-bg to-transparent z-10 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-brand-bg to-transparent z-10 pointer-events-none" />
+                    <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#F3F0E6] dark:from-black to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#F3F0E6] dark:from-black to-transparent z-10 pointer-events-none" />
                     <div className="flex gap-6 animate-scroll" style={{ '--animation-duration': '30s' }}>
                         {[...skills.flatMap(s => s.items), ...skills.flatMap(s => s.items)].map((skill, i) => (
                             <span key={i} className="text-xs text-zinc-700 whitespace-nowrap font-mono uppercase tracking-wider shrink-0">

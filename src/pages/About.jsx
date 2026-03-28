@@ -13,7 +13,7 @@ export const About = () => {
                 <div className="flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24 animate-fadeInUp">
                     {/* Text Content */}
                     <div className="flex-1 space-y-8">
-                        <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight">
+                        <h1 className="section-heading text-5xl md:text-7xl text-gray-900 dark:text-white tracking-tight leading-tight">
                             About <span className="text-blue-600 dark:text-blue-400 relative inline-block">
                                 Me.
                                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-blue-200 dark:text-blue-900 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -47,6 +47,7 @@ export const About = () => {
                                 <img
                                     src={profile.about.photo}
                                     alt={profile.name}
+                                    loading="lazy"
                                     className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 scale-110 group-hover:scale-100"
                                 />
                                 {/* Overlay Gradient */}
@@ -154,7 +155,7 @@ const SectionTitle = ({ icon, title }) => {
     };
 
     return (
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-4">
+        <h2 className="section-heading text-3xl text-gray-900 dark:text-white flex items-center gap-4">
             <span className={`w-12 h-1.5 ${colorMap[icon] || 'bg-gray-500'} rounded-full`} />
             {title}
         </h2>
@@ -200,11 +201,13 @@ const HobbyCard = ({ icon, label, desc, color, images }) => (
                     <img
                         src={images[0]}
                         alt={label}
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <img
                         src={images[1]}
                         alt={label}
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                 </div>

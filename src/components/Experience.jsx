@@ -14,7 +14,7 @@ export const Experience = ({ quote }) => {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                    <h2 className="section-heading text-4xl md:text-5xl text-gray-900 dark:text-white mb-6">
                         My <span className="text-blue-600 dark:text-blue-400">Journey</span>
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">

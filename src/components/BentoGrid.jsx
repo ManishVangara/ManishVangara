@@ -136,7 +136,7 @@ export const BentoGrid = ({ quote }) => {
 
     return (
         <section className="py-20 px-6 max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
 
                 {/* 1. Location Card - Large 2x2 */}
                 <Card className="md:col-span-2 md:row-span-2 min-h-[300px] relative flex flex-col justify-between">

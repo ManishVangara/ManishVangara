@@ -14,7 +14,7 @@ export const Certifications = () => {
         <section id="certifications" className="py-24 bg-[#F3F0E6] dark:bg-zinc-900/50 relative overflow-hidden transition-colors duration-300" style={{ position: 'relative', overflow: 'hidden' }}>
             <div className="max-w-7xl mx-auto px-6 relative z-10" style={{ position: 'relative' }}>
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 font-serif">
+                    <h2 className="section-heading text-4xl md:text-5xl text-gray-900 dark:text-white mb-6">
                         Licenses & <span className="text-blue-600 dark:text-blue-400">Certifications</span>
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-sans">
