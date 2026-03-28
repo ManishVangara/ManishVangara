@@ -8,7 +8,7 @@ import { QuoteBubble } from './QuoteBubble';
 export const Experience = ({ quote }) => {
     const containerRef = useRef(null);
     return (
-        <section id="experience" className="py-24 bg-transparent dark:bg-black relative overflow-hidden">
+        <section id="experience" className="py-24 bg-transparent dark:bg-black relative overflow-hidden" style={{ position: 'relative', overflow: 'hidden' }}>
             {/* Background Grids */}
             <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" />
 
@@ -22,7 +22,7 @@ export const Experience = ({ quote }) => {
                     </p>
                 </div>
 
-                <div ref={containerRef} className="relative max-w-4xl mx-auto">
+                <div ref={containerRef} className="relative max-w-4xl mx-auto" style={{ position: 'relative' }}>
                     {/* Wavy Connector Line */}
                     <ScrollProgressWavyLine containerRef={containerRef} />
 

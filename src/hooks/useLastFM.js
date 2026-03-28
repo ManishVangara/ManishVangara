@@ -9,7 +9,6 @@ export const useLastFM = () => {
 
     useEffect(() => {
         if (!API_KEY || !USERNAME) {
-            console.warn("Last.FM credentials missing in .env");
             setLoading(false);
             return;
         }

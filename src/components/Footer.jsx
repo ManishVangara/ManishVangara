@@ -21,7 +21,6 @@ export const Footer = () => {
         { label: 'Projects', to: '/projects' },
         { label: 'About', to: '/about' },
         { label: 'Journey', to: '/#experience' },
-        { label: 'Blog', to: '/blogs' },
         { label: 'Connect', to: '/#connect' },
     ];
 

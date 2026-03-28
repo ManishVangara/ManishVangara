@@ -95,9 +95,9 @@ export const Connect = ({ quote }) => {
                             <form onSubmit={handleSubmit} className="space-y-5">
                                 {/* Topic chips with icons */}
                                 <div>
-                                    <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-3">
+                                    <span className="block text-xs text-zinc-500 uppercase tracking-wider mb-3">
                                         What's this about?
-                                    </label>
+                                    </span>
                                     <div className="flex flex-wrap gap-2">
                                         {topics.map((topic) => (
                                             <button
@@ -121,32 +121,40 @@ export const Connect = ({ quote }) => {
 
                                 <div className="grid sm:grid-cols-2 gap-4">
                                     <div className="relative">
-                                        <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Name</label>
+                                        <label htmlFor="name" className="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Name</label>
                                         <input
+                                            id="name"
+                                            name="name"
                                             type="text"
                                             value={formData.name}
                                             onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                                             className="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/5 text-gray-900 dark:text-white text-sm placeholder:text-zinc-400 dark:placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white dark:focus:bg-white/[0.05] transition-all"
                                             placeholder="Your name"
+                                            autoComplete="name"
                                             required
                                         />
                                     </div>
                                     <div className="relative">
-                                        <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Email</label>
+                                        <label htmlFor="email" className="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Email</label>
                                         <input
+                                            id="email"
+                                            name="email"
                                             type="email"
                                             value={formData.email}
                                             onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                                             className="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/5 text-gray-900 dark:text-white text-sm placeholder:text-zinc-400 dark:placeholder:text-zinc-700 focus:outline-none focus:border-brand-blue/30 focus:bg-white dark:focus:bg-white/[0.05] transition-all"
                                             placeholder="your@email.com"
+                                            autoComplete="email"
                                             required
                                         />
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Message</label>
+                                    <label htmlFor="message" className="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Message</label>
                                     <textarea
+                                        id="message"
+                                        name="message"
                                         value={formData.message}
                                         onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                                         rows={4}

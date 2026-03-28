@@ -242,7 +242,7 @@ export const Hero = () => {
                     <div className="space-y-8 lg:pr-8">
                         <StaggerItem delay={200}>
                             <p className="text-sm font-mono text-zinc-500 tracking-widest uppercase">
-                                Portfolio / 2025
+                                Portfolio
                             </p>
                         </StaggerItem>
 
