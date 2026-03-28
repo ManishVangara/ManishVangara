@@ -13,7 +13,7 @@ export const About = () => {
                 <div className="flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24 animate-fadeInUp">
                     {/* Text Content */}
                     <div className="flex-1 space-y-8">
-                        <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight">
+                        <h1 className="section-heading text-5xl md:text-7xl text-gray-900 dark:text-white tracking-tight leading-tight">
                             About <span className="text-blue-600 dark:text-blue-400 relative inline-block">
                                 Me.
                                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-blue-200 dark:text-blue-900 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -47,6 +47,7 @@ export const About = () => {
                                 <img
                                     src={profile.about.photo}
                                     alt={profile.name}
+                                    loading="lazy"
                                     className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 scale-110 group-hover:scale-100"
                                 />
                                 {/* Overlay Gradient */}
@@ -132,7 +133,7 @@ export const About = () => {
                 {/* 4. Connect/Links */}
                 <FadeInSection id="connect" className="text-center py-12">
                     <div className="inline-block p-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 cursor-pointer hover:scale-105 transition-transform duration-300">
-                        <a href={`mailto:${profile.email}`} className="block px-12 py-4 bg-white dark:bg-black rounded-full text-xl font-bold text-gray-900 dark:text-white hover:bg-transparent hover:text-white transition-colors">
+                        <a href={`mailto:${profile.email}`} className="block px-12 py-4 bg-white dark:bg-black rounded-full text-xl font-bold text-gray-900 dark:text-white hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-colors">
                             Let's Build Something Together
                         </a>
                     </div>
@@ -154,7 +155,7 @@ const SectionTitle = ({ icon, title }) => {
     };
 
     return (
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-4">
+        <h2 className="section-heading text-3xl text-gray-900 dark:text-white flex items-center gap-4">
             <span className={`w-12 h-1.5 ${colorMap[icon] || 'bg-gray-500'} rounded-full`} />
             {title}
         </h2>
@@ -200,11 +201,13 @@ const HobbyCard = ({ icon, label, desc, color, images }) => (
                     <img
                         src={images[0]}
                         alt={label}
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <img
                         src={images[1]}
                         alt={label}
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                 </div>
@@ -214,17 +217,14 @@ const HobbyCard = ({ icon, label, desc, color, images }) => (
 );
 
 const BucketItem = ({ done, label }) => {
-    const [checked, setChecked] = useState(done);
-    // Allow interactivity just for fun
     return (
         <div
-            onClick={() => setChecked(!checked)}
-            className={`cursor-pointer group flex items-center gap-4 p-4 rounded-2xl border transition-all duration-300 ${checked ? 'bg-green-50/50 dark:bg-green-900/10 border-green-200 dark:border-green-800' : 'bg-gray-50 dark:bg-zinc-900 border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20'}`}
+            className={`group flex items-center gap-4 p-4 rounded-2xl border transition-all duration-300 ${done ? 'bg-green-50/50 dark:bg-green-900/10 border-green-200 dark:border-green-800' : 'bg-gray-50 dark:bg-zinc-900 border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20'}`}
         >
-            <div className={`relative flex-shrink-0 transition-transform duration-300 ${checked ? 'scale-110' : 'group-hover:scale-110'}`}>
-                {checked ? <CheckCircle2 className="text-green-500" /> : <Circle className="text-gray-400" />}
+            <div className={`relative flex-shrink-0 transition-transform duration-300 ${done ? 'scale-110' : 'group-hover:scale-110'}`}>
+                {done ? <CheckCircle2 className="text-green-500" /> : <Circle className="text-gray-400" />}
             </div>
-            <span className={`${checked ? 'text-gray-900 dark:text-white font-medium line-through decoration-green-500/50 decoration-2' : 'text-gray-600 dark:text-gray-400'}`}>
+            <span className={`${done ? 'text-gray-900 dark:text-white font-medium line-through decoration-green-500/50 decoration-2' : 'text-gray-600 dark:text-gray-400'}`}>
                 {label}
             </span>
         </div>

@@ -44,7 +44,7 @@ export const ProjectShowcase = ({ quote }) => {
         <section id="projects" className="py-24 bg-[#F3F0E6] dark:bg-zinc-900/30 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="mb-16">
-                    <h2 className="text-4xl font-bold text-gray-900 dark:text-white capitalize mb-4">
+                    <h2 className="section-heading text-4xl text-gray-900 dark:text-white capitalize mb-4">
                         Featured <span className="text-blue-600 dark:text-blue-400">Projects</span>
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
@@ -55,7 +55,7 @@ export const ProjectShowcase = ({ quote }) => {
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 relative">
 
                     {/* Left Column - Scrolling Images */}
-                    <div className="w-full lg:w-1/2 flex flex-col gap-12 lg:gap-24">
+                    <div className="w-full lg:w-1/2 flex flex-col gap-12 lg:gap-24 max-w-2xl lg:max-w-none mx-auto">
                         {projects.map((project, index) => (
                             <div
                                 key={project.id}

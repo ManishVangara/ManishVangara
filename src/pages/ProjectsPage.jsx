@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { ExternalLink, Github, Search, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -11,13 +11,15 @@ export const ProjectsPage = () => {
     const [filter, setFilter] = useState("All");
     const [search, setSearch] = useState("");
 
-    const filteredProjects = allProjects.filter(project => {
-        const matchesCategory = filter === "All" || (project.category || "Uncategorized") === filter;
-        const matchesSearch = (project.title || "").toLowerCase().includes(search.toLowerCase()) ||
-            (project.description || "").toLowerCase().includes(search.toLowerCase()) ||
-            (project.tech || []).some(t => t.toLowerCase().includes(search.toLowerCase()));
-        return matchesCategory && matchesSearch;
-    });
+    const filteredProjects = useMemo(() => {
+        return allProjects.filter(project => {
+            const matchesCategory = filter === "All" || (project.category || "Uncategorized") === filter;
+            const matchesSearch = (project.title || "").toLowerCase().includes(search.toLowerCase()) ||
+                (project.description || "").toLowerCase().includes(search.toLowerCase()) ||
+                (project.tech || []).some(t => t.toLowerCase().includes(search.toLowerCase()));
+            return matchesCategory && matchesSearch;
+        });
+    }, [filter, search]);
 
     return (
         <div className="min-h-screen pt-24 pb-16 px-6 max-w-7xl mx-auto">
@@ -29,7 +31,7 @@ export const ProjectsPage = () => {
                         <ArrowLeft size={20} />
                         Back to Home
                     </Link>
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+                    <h1 className="section-heading text-4xl md:text-5xl text-gray-900 dark:text-white">
                         All <span className="text-blue-600 dark:text-blue-400">Projects</span>
                     </h1>
                 </div>
@@ -73,6 +75,7 @@ export const ProjectsPage = () => {
                                 <img
                                     src={project.image || "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80"}
                                     alt={project.title || 'Project'}
+                                    loading="lazy"
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
                             </Link>

@@ -1,74 +1,151 @@
-import { MapPin, Brain, Music, Coffee, Rocket, BookOpen, ArrowRight } from 'lucide-react';
+import { MapPin, Brain, Music, Coffee, Rocket, BookOpen, ArrowRight, Database, Server, LineChart, Activity, Sparkles } from 'lucide-react';
 import { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { profile } from '../data/profile';
 // import { Globe } from './ui/Globe';
-import { useLastFM } from '../hooks/useLastFM';
+// import { useLastFM } from '../hooks/useLastFM';
 const Globe = lazy(() => import('./ui/Globe').then(module => ({ default: module.Globe })));
 
-const MusicCard = () => {
-    const { musicData, loading } = useLastFM();
-
-    if (loading || !musicData) {
-        return (
-            <Card className="md:col-span-1 border-pink-500/20 group">
-                <div className="h-full flex flex-col justify-between">
-                    <div className="flex justify-between items-start">
-                        <div className="bg-pink-100 dark:bg-pink-500/20 w-10 h-10 rounded-full flex items-center justify-center">
-                            <Music className="text-pink-600 dark:text-pink-400" size={20} />
-                        </div>
-                    </div>
-                    <div>
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">Offline</h3>
-                        <p className="text-pink-600 dark:text-pink-400 text-sm font-medium">Spotify not connected</p>
-                    </div>
-                </div>
-            </Card>
-        );
-    }
+const DataPipelineCard = () => {
+    const [step, setStep] = useState(0);
+    const steps = ['Extracting', 'Transforming', 'Loading', 'Serving'];
+    
+    useEffect(() => {
+        const timer = setInterval(() => setStep(s => (s + 1) % steps.length), 1500);
+        return () => clearInterval(timer);
+    }, []);
 
     return (
-        <a href={musicData.url} target="_blank" rel="noopener noreferrer" className="block h-full">
-            <Card className="md:col-span-1 h-full p-0 overflow-hidden relative group border-0 ring-1 ring-gray-200 dark:ring-white/10">
-                {/* Background Art */}
-                <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${musicData.art})` }}
-                />
-                <div className="absolute inset-0 bg-black/50 backdrop-blur-sm group-hover:backdrop-blur-md transition-all duration-300" />
+        <Card className="md:col-span-1 border-blue-500/20 group relative overflow-hidden h-full cursor-default hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">
+            <style>{`
+                @keyframes flow {
+                    0% { transform: translateX(-100%); opacity: 0; }
+                    20% { opacity: 1; }
+                    80% { opacity: 1; }
+                    100% { transform: translateX(300px); opacity: 0; }
+                }
+                .flow-1 { animation: flow 2s infinite linear; }
+                .flow-2 { animation: flow 2.5s infinite linear 0.8s; }
+                .flow-3 { animation: flow 1.8s infinite linear 1.5s; }
+            `}</style>
+            
+            {/* Matrix/Data grid background pattern */}
+            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none transition-opacity duration-300 group-hover:opacity-10" style={{
+                backgroundImage: 'radial-gradient(circle, #3b82f6 1.5px, transparent 1.5px)',
+                backgroundSize: '12px 12px'
+            }}></div>
 
-                <div className="relative h-full p-6 flex flex-col justify-between z-10">
-                    <div className="flex justify-between items-start">
-                        <div className="bg-green-500/20 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10">
-                            {musicData.isPlaying ? (
-                                <div className="flex items-end gap-1 h-4">
-                                    <div className="w-1 bg-green-500 rounded-t animate-[music_1s_ease-in-out_infinite]" style={{ height: '40%' }}></div>
-                                    <div className="w-1 bg-green-500 rounded-t animate-[music_1.2s_ease-in-out_infinite_0.1s]" style={{ height: '80%' }}></div>
-                                    <div className="w-1 bg-green-500 rounded-t animate-[music_0.8s_ease-in-out_infinite_0.2s]" style={{ height: '50%' }}></div>
-                                </div>
-                            ) : (
-                                <Music className="text-green-400" size={20} />
-                            )}
-                        </div>
+            {/* Glowing morphing background spheres */}
+            <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl -translate-y-10 translate-x-10 transition-all duration-700 group-hover:scale-150 ${step % 2 === 0 ? 'bg-blue-500/20' : 'bg-purple-500/20'}`} />
+            
+            <div className="h-full flex flex-col justify-between relative z-10">
+                <div className="flex justify-between items-start mb-6">
+                    <div className="bg-gradient-to-br from-blue-400 to-purple-600 w-10 h-10 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/30 border border-white/20 text-white group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300">
+                        <Activity size={18} />
                     </div>
-
-                    <div>
-                        <div className="flex items-center gap-2 mb-1">
-                            <span className={`w-2 h-2 rounded-full ${musicData.isPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`} />
-                            <span className="text-xs font-medium text-gray-300 uppercase tracking-wider">
-                                {musicData.isPlaying ? 'Listening To' : 'Last Played'}
-                            </span>
-                        </div>
-                        <h3 className="text-lg font-bold text-white leading-tight line-clamp-1" title={musicData.name}>
-                            {musicData.name}
-                        </h3>
-                        <p className="text-gray-300 text-sm font-medium line-clamp-1" title={musicData.artist}>
-                            {musicData.artist}
-                        </p>
+                    {/* Dynamic Status badge */}
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 overflow-hidden min-w-[100px] justify-center">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                        <span className="text-[10px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider relative transition-all duration-300">
+                            {steps[step]}...
+                        </span>
                     </div>
                 </div>
-            </Card>
-        </a>
+
+                {/* The Playful Pipeline Animation */}
+                <div className="flex-1 flex items-center justify-center py-2">
+                    <div className="flex items-center gap-3 w-full max-w-[220px] justify-between relative">
+                        {/* Connecting Track */}
+                        <div className="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden z-0">
+                            {/* Colorful Data Packets */}
+                            <div className="absolute top-0 h-full w-8 bg-gradient-to-r from-transparent via-blue-500 to-transparent flow-1 rounded-full" />
+                            <div className="absolute top-0 h-full w-6 bg-gradient-to-r from-transparent via-purple-500 to-transparent flow-2 rounded-full" />
+                            <div className="absolute top-0 h-full w-10 bg-gradient-to-r from-transparent via-green-500 to-transparent flow-3 rounded-full" />
+                        </div>
+
+                        {/* Node 1: DB */}
+                        <div className="relative group/node z-10">
+                            <div className={`absolute -inset-2 bg-blue-500/20 rounded-full blur-md transition-opacity duration-300 ${step === 0 ? 'opacity-100' : 'opacity-0'}`} />
+                            <div className={`w-10 h-10 rounded-xl shadow-lg border-2 flex items-center justify-center transition-all duration-300 ${step === 0 ? 'bg-blue-500 border-blue-400 text-white scale-110' : 'bg-white dark:bg-zinc-800 border-gray-200 dark:border-white/10 text-gray-400'}`}>
+                                <Database size={16} className={step === 0 ? 'animate-bounce' : ''} />
+                            </div>
+                        </div>
+
+                        {/* Node 2: Processing (Gears/Server) */}
+                        <div className="relative group/node z-10">
+                            <div className={`absolute -inset-2 bg-purple-500/20 rounded-full blur-md transition-opacity duration-300 ${step === 1 || step === 2 ? 'opacity-100' : 'opacity-0'}`} />
+                            <div className={`w-10 h-10 rounded-xl shadow-lg border-2 flex items-center justify-center transition-all duration-300 ${step === 1 || step === 2 ? 'bg-purple-500 border-purple-400 text-white scale-110' : 'bg-white dark:bg-zinc-800 border-gray-200 dark:border-white/10 text-gray-400'}`}>
+                                <Server size={16} className={step === 1 || step === 2 ? 'animate-pulse' : ''} />
+                            </div>
+                        </div>
+
+                        {/* Node 3: Output (Insights) */}
+                        <div className="relative group/node z-10">
+                            <div className={`absolute -inset-2 bg-green-500/20 rounded-full blur-md transition-opacity duration-300 ${step === 3 ? 'opacity-100' : 'opacity-0'}`} />
+                            <div className={`w-12 h-12 rounded-xl shadow-lg border-2 flex items-center justify-center transition-all duration-300 ${step === 3 ? 'bg-green-500 border-green-400 text-white scale-110 rotate-12' : 'bg-white dark:bg-zinc-800 border-gray-200 dark:border-white/10 text-gray-400'}`}>
+                                <Sparkles size={18} className={step === 3 ? 'animate-spin' : ''} style={step === 3 ? { animationDuration: '3s' } : {}}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mt-4">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-500">Data Flow</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-[13px] font-medium mt-1">Powering millions of data points seamlessly</p>
+                </div>
+            </div>
+        </Card>
+    );
+};
+
+const CoffeeCard = () => {
+    const brews = [
+        { name: "Iced Caramel Macchiato", line: "Because adulting is too hard without sugar." },
+        { name: "Golden Eagle Freeze", line: "A necessity for surviving production deployments." },
+        { name: "Caffe Americano", line: "Just keeping it simple and incredibly caffeinated." },
+        { name: "Nitro Cold Brew", line: "Fueling my hyper-focus mode." },
+        { name: "Kicker", line: "For when regular coffee alone isn't enough." },
+        { name: "Iced Chai Latte", line: "Strictly for cozy coding vibes." },
+        { name: "Annihilator", line: "Executing pipelines at terminal velocity." }
+    ];
+    
+    const [brew, setBrew] = useState(brews[0]);
+    useEffect(() => {
+        // Create a pseudo-random hash based on today's date string
+        const dateString = new Date().toDateString();
+        let hash = 0;
+        for (let i = 0; i < dateString.length; i++) {
+            hash = Math.imul(31, hash) + dateString.charCodeAt(i) | 0;
+        }
+        setBrew(brews[Math.abs(hash) % brews.length]);
+    }, []);
+
+    return (
+        <Card className="md:col-span-1 group relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full blur-xl -translate-y-8 translate-x-8 transition-transform duration-500 group-hover:scale-150" />
+            
+            <div className="flex justify-between items-start relative z-10">
+                <div className="bg-amber-100 dark:bg-amber-500/20 w-10 h-10 rounded-full flex items-center justify-center border border-amber-200 dark:border-amber-500/30 shadow-sm group-hover:-rotate-12 group-hover:scale-110 transition-transform duration-300">
+                    <Coffee className="text-amber-600 dark:text-amber-400" size={18} />
+                </div>
+                <div className="px-2.5 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
+                    <span className="text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        Today's Brew
+                    </span>
+                </div>
+            </div>
+            
+            <div className="relative z-10 mt-6 md:mt-10">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-snug mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    {brew.name}
+                </h3>
+                <div className="flex flex-wrap items-center mt-1">
+                    <p className="text-gray-500 dark:text-gray-400 text-xs italic">
+                        "{brew.line}"
+                    </p>
+                </div>
+            </div>
+        </Card>
     );
 };
 
@@ -136,7 +213,7 @@ export const BentoGrid = ({ quote }) => {
 
     return (
         <section className="py-20 px-6 max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
 
                 {/* 1. Location Card - Large 2x2 */}
                 <Card className="md:col-span-2 md:row-span-2 min-h-[300px] relative flex flex-col justify-between">
@@ -215,27 +292,11 @@ export const BentoGrid = ({ quote }) => {
                     </div>
                 </Card>
 
-                {/* 3. Music */}
-                <Card className="md:col-span-1 border-pink-500/20 group">
-                    {/* 3. Music */}
-                    <MusicCard />
-                </Card>
+                {/* 3. Data Pipeline Component */}
+                <DataPipelineCard />
 
-                {/* 4. Coffee Counter */}
-                <Card className="md:col-span-1">
-                    <div className="h-full flex flex-col justify-between">
-                        <div className="bg-amber-100 dark:bg-amber-500/20 w-10 h-10 rounded-full flex items-center justify-center">
-                            <Coffee className="text-amber-600 dark:text-amber-400" size={20} />
-                        </div>
-                        <div>
-                            <div className="text-3xl font-bold text-gray-900 dark:text-white flex items-baseline gap-1">
-                                <AnimatedCounter end={1250} />
-                                <span className="text-base font-normal text-gray-500">+</span>
-                            </div>
-                            <p className="text-gray-500 dark:text-gray-400 text-sm">Coffees Consumed</p>
-                        </div>
-                    </div>
-                </Card>
+                {/* 4. Coffee Tracker */}
+                <CoffeeCard />
 
                 {/* 5. Projects Shipped -> Contribution Activity */}
                 <Card className="md:col-span-1 min-h-[180px] overflow-hidden">
@@ -257,7 +318,7 @@ export const BentoGrid = ({ quote }) => {
                         </div>
                         <div>
                             <div className="text-3xl font-bold text-gray-900 dark:text-white flex items-baseline gap-1">
-                                <AnimatedCounter end={45} />
+                                <AnimatedCounter end={11} />
                                 <span className="text-base font-normal text-gray-500">+</span>
                             </div>
                             <p className="text-gray-500 dark:text-gray-400 text-sm">Projects Shipped</p>

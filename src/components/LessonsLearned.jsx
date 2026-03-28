@@ -24,7 +24,7 @@ export const LessonsLearned = () => {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                    <h2 className="section-heading text-4xl md:text-5xl text-gray-900 dark:text-white mb-6">
                         Lessons Learned <span className="text-red-500 dark:text-red-400">The Hard Way</span>
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">

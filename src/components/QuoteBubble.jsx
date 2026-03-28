@@ -8,7 +8,7 @@ export const QuoteBubble = ({ quote, className = "" }) => {
     if (!quote) return null;
 
     return (
-        <div ref={ref} className={`flex justify-center py-16 overflow-visible ${className}`}>
+        <div ref={ref} className={`flex justify-center py-16 overflow-visible relative ${className}`} style={{ position: 'relative' }}>
             <motion.div
                 initial={{ scale: 0.8, opacity: 0, y: 30 }}
                 animate={isInView ? { scale: 1, opacity: 1, y: 0 } : { scale: 0.8, opacity: 0, y: 30 }}
