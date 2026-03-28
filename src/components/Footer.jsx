@@ -34,14 +34,14 @@ export const Footer = () => {
         <>
             <footer className="relative bg-[#F3F0E6] dark:bg-black transition-colors duration-300">
                 {/* Gradient top border */}
-                <div className="h-px bg-gradient-to-r from-transparent via-brand-blue/30 to-transparent" />
+                <div className="h-px bg-gradient-to-r from-transparent via-blue-600/30 to-transparent" />
 
                 <div className="max-w-6xl mx-auto px-6 py-12">
                     <div className="grid sm:grid-cols-3 gap-8 mb-10">
                         {/* Brand */}
                         <div>
                             <Link to="/" className="inline-block text-xl font-heading font-bold text-gray-900 dark:text-white mb-3">
-                                {profile.name.split(' ')[0]}<span className="text-brand-blue">.</span>
+                                {profile.name.split(' ')[0]}<span className="text-blue-600 dark:text-blue-400">.</span>
                             </Link>
                             <p className="text-xs text-zinc-600 dark:text-zinc-600 leading-relaxed max-w-[200px]">
                                 Data Engineer & ML Systems Architect based in {profile.location}.
@@ -85,7 +85,7 @@ export const Footer = () => {
                                     href={profile.resume}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-block mt-4 text-xs text-brand-blue hover:text-blue-300 transition-colors"
+                                    className="inline-block mt-4 text-xs text-blue-600 dark:text-blue-400 hover:text-blue-500 transition-colors"
                                 >
                                     Download Resume →
                                 </a>

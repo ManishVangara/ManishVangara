@@ -231,8 +231,8 @@ export const Hero = () => {
         >
             {/* Radial glow behind orb — enlarged and multi-color */}
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none opacity-50 dark:opacity-100">
-                <div className="absolute inset-0 bg-brand-blue/5 rounded-full blur-[150px]" />
-                <div className="absolute inset-12 bg-brand-purple/4 rounded-full blur-[120px]" />
+                <div className="absolute inset-0 bg-blue-500/5 rounded-full blur-[150px]" />
+                <div className="absolute inset-12 bg-purple-500/4 rounded-full blur-[120px]" />
             </div>
 
             <div className="max-w-7xl mx-auto px-6 w-full">

@@ -150,7 +150,7 @@ export const Navbar = () => {
                 <div className={`flex items-center justify-between px-4 py-3 transition-all duration-300 ${scrolled ? 'glass-nav' : 'bg-transparent'
                     }`}>
                     <Link to="/" className="text-lg font-heading font-bold text-gray-900 dark:text-white">
-                        MV<span className="text-brand-blue">.</span>
+                        MV<span className="text-blue-600 dark:text-blue-400">.</span>
                     </Link>
 
                     <div className="flex items-center gap-2">
