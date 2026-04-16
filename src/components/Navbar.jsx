@@ -71,6 +71,13 @@ export const Navbar = () => {
             <nav className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'top-3' : 'top-5'}`}>
                 <div className="hidden md:flex items-center gap-1 glass-nav rounded-full px-2 py-1.5 shadow-lg shadow-black/5 dark:shadow-black/20">
 
+                    {/* Brand Logo */}
+                    <Link to="/" className="flex items-center pl-2 pr-1 hover:opacity-80 transition-opacity">
+                        <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Logo" className="h-5 w-auto" />
+                    </Link>
+
+                    <div className="w-px h-4 bg-zinc-200 dark:bg-white/10 mx-1"></div>
+
                     {/* Available for work badge */}
                     <div className="flex items-center gap-1.5 px-3 py-1.5 mr-1">
                         <span className="relative flex h-2 w-2">
@@ -149,7 +156,8 @@ export const Navbar = () => {
             <nav className="md:hidden fixed top-0 left-0 right-0 z-50">
                 <div className={`flex items-center justify-between px-4 py-3 transition-all duration-300 ${scrolled ? 'glass-nav' : 'bg-transparent'
                     }`}>
-                    <Link to="/" className="text-lg font-heading font-bold text-gray-900 dark:text-white">
+                    <Link to="/" className="flex items-center gap-2 text-lg font-heading font-bold text-gray-900 dark:text-white">
+                        <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Logo" className="h-6 w-auto" />
                         MV<span className="text-blue-600 dark:text-blue-400">.</span>
                     </Link>
 

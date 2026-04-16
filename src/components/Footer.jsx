@@ -40,7 +40,8 @@ export const Footer = () => {
                     <div className="grid sm:grid-cols-3 gap-8 mb-10">
                         {/* Brand */}
                         <div>
-                            <Link to="/" className="inline-block text-xl font-heading font-bold text-gray-900 dark:text-white mb-3">
+                            <Link to="/" className="inline-flex items-center gap-2 text-xl font-heading font-bold text-gray-900 dark:text-white mb-3">
+                                <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Logo" className="h-8 w-auto" />
                                 {profile.name.split(' ')[0]}<span className="text-blue-600 dark:text-blue-400">.</span>
                             </Link>
                             <p className="text-xs text-zinc-600 dark:text-zinc-600 leading-relaxed max-w-[200px]">
